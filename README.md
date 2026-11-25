@@ -45,6 +45,13 @@ where this checkout is named or symlinked as `grkit-light-leak`.
   indexable URLs to the sitemap. Keep FAQ answers in the HTML and link to
   sources for compatibility and recovery.
 
+## Analytics
+
+The six content pages load Google Tag Manager container `GTM-52MK6S86`.
+Analytics tags and their trigger and consent settings are managed in Google
+Tag Manager. This repository does not configure a separate Google Analytics
+measurement ID.
+
 ## Sample photo and credits
 
 The single demonstration photograph is by

@@ -12,6 +12,18 @@ RELEASES = f"{REPO}/releases"
 RECOVERY = "https://grkit.app/docs/recovery/"
 PHOTO = "https://www.flickr.com/photos/mujitra/53311001084/"
 PHOTO_LICENSE = "https://creativecommons.org/licenses/by/2.0/"
+GTM_ID = "GTM-52MK6S86"
+GTM_HEAD = """  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','%s');</script>
+  <!-- End Google Tag Manager -->""" % GTM_ID
+GTM_BODY = f"""  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={GTM_ID}"
+  height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->"""
 STYLES = (
     ("Slit Flare", "slit-flare", "2-slit"),
     ("Burnt Edge", "burnt-edge", "3-burnt"),
@@ -384,7 +396,11 @@ def sync(verify=False):
             before = path.read_text(encoding="utf-8")
             source = replace(r"^  <header class=\"masthead\">.*?^  </header>", before, header(lang, page, root))
             source = replace(r"^  <footer class=\"footer\">.*?^  </footer>", source, footer(lang, root))
-            source = replace(r"^<body[^>]*>", source, '<body class="page">')
+            source = re.sub(r"^  <!-- Google Tag Manager -->\n.*?^  <!-- End Google Tag Manager -->\n", "", source, flags=re.MULTILINE | re.DOTALL)
+            source = re.sub(r"^  <!-- Google Tag Manager \(noscript\) -->\n.*?^  <!-- End Google Tag Manager \(noscript\) -->\n", "", source, flags=re.MULTILINE | re.DOTALL)
+            charset = '  <meta charset="utf-8">'
+            source = replace(f"^{charset}$", source, f"{charset}\n{GTM_HEAD}")
+            source = replace(r"^<body[^>]*>", source, f'<body class="page">\n{GTM_BODY}')
             source = re.sub(r'^  <script defer src="[^"]+/site\.js"></script>\n', "", source, flags=re.MULTILINE)
             source = source.replace("</head>", f'  <script defer src="{root}assets/site.js"></script>\n</head>')
             alt = COPY[lang]["photo"] + " — Slit Flare"
