@@ -1,4 +1,5 @@
 id = "LITLEAK"
+# Integer GRM revision; the public SemVer is kept in VERSION.
 version = 16
 # After Glow and before Film-like Grain in the frame stage.
 order = 47

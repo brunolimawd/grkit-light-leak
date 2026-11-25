@@ -56,9 +56,11 @@ rewrite them.
 - Use Conventional Commits. Describe the user-visible change, list the
   checks you ran and record the camera model and firmware for hardware
   tests. If you didn't test on camera, say so.
-- For a release, bump `version` in `module.toml`, add the user-visible
-  change and actual camera test results to `CHANGELOG.md`, then build from
-  a clean checkout. Publish a matching tag (for example, `v16`) and attach
-  `LITLEAK.GRM` to the GitHub Release. Do not commit the build output.
+- For a release, update the public SemVer in `VERSION` and record the
+  user-visible changes and actual camera test results in `CHANGELOG.md`.
+  Increase the integer `version` in `module.toml` when releasing a changed
+  `.GRM`; the SDK does not accept a SemVer string there. Build from a clean
+  checkout. Use `v` followed by `VERSION` for the tag, mark beta releases
+  as pre-releases, and attach `LITLEAK.GRM`. Do not commit the build output.
 - Keep the MIT license and notices for any reused material. Do not add
   firmware or third-party reference photos.

@@ -5,6 +5,8 @@ Light Leak is an **unofficial third-party module** for
 edge of a film camera. It is installed separately from the official
 modules and does not modify camera firmware.
 
+Current beta: **`0.1.0-beta.1`** (GRM revision `16`). See [`VERSION`](VERSION).
+
 ## Compatibility
 
 | Camera | Firmware | Hardware validation |
@@ -58,10 +60,10 @@ consecutive shots can repeat. Each draw uses
 the capture metadata and light samples from the main JPEG plane, not a
 firmware clock call or mutable state carried between encodes.
 
-The standalone v16 release uses the same module ID and settings as the
-v16 integration build. Existing settings are kept on upgrade from v11
-or later. If upgrading from a prototype before v11, select the style
-again in ADJ.
+The standalone beta uses the same module ID, GRM revision and settings
+as integration build 16. Existing settings are kept on upgrade from
+integration build 11 or later. If upgrading from an earlier prototype,
+select the style again in ADJ.
 
 The six reference styles calculate the light at the native sample centers
 of each JPEG plane, without enlarging a raster mask. The source photos

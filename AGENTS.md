@@ -25,7 +25,8 @@ sibling checkout.
 - Keep the module ID and card file `LITLEAK.GRM`. Saved setting keys and
   their value IDs are compatibility contracts. Do not renumber or reuse
   them silently. Match changes to UI values across all five files in
-  `text/`. Bump `module.toml`'s version for a new release.
+  `text/`. Public releases use SemVer in `VERSION`; `module.toml` keeps
+  an independent, monotonically increasing integer GRM revision.
 - `light_leak.c` resolves style, side, strength and variation once per
   encode. Keep the main JPEG and its previews on the same draw. Do not
   call the firmware clock or introduce mutable cross-shot RNG state:
