@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-52MK6S86');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>在理光 GR III 上安装 Light Leak（漏光）</title>
+  <meta name="description" content="下载 LITLEAK.GRM，查看已测试的理光 GR III 固件版本和 GRKit 要求，并了解如何通过 SD 卡安装、更新或卸载漏光模块。">
+  <link rel="canonical" href="https://brunolimawd.github.io/grkit-light-leak/zh-hans/install/">
+  <link rel="alternate" hreflang="en" href="https://brunolimawd.github.io/grkit-light-leak/install/">
+  <link rel="alternate" hreflang="pt-BR" href="https://brunolimawd.github.io/grkit-light-leak/pt-br/install/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://brunolimawd.github.io/grkit-light-leak/zh-hans/install/">
+  <link rel="alternate" hreflang="x-default" href="https://brunolimawd.github.io/grkit-light-leak/install/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Light Leak for GRKit">
+  <meta property="og:title" content="在理光 GR III 上安装 Light Leak（漏光）">
+  <meta property="og:description" content="查看已测试的相机和固件、SD 卡上的文件路径，以及漏光模块的安装和卸载步骤。">
+  <meta property="og:url" content="https://brunolimawd.github.io/grkit-light-leak/zh-hans/install/">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="pt_BR">
+  <meta property="og:image" content="https://brunolimawd.github.io/grkit-light-leak/assets/share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="带条纹遮阳篷的餐车和站在车外的顾客 — 缝隙光束">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="../../assets/mark.svg">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script defer src="../../assets/site.js"></script>
+</head>
+<body class="page">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-52MK6S86"
+  height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="masthead">
+    <div class="masthead-top">
+      <div class="masthead-title">
+        <a class="masthead-name" href="../../zh-hans/">Light <span class="kit">Leak</span></a>
+        <a class="masthead-version" href="https://github.com/brunolimawd/grkit-light-leak/releases">beta</a>
+      </div>
+      <div class="languages">
+        <nav class="masthead-nav" aria-label="主导航">
+          <a href="../../zh-hans/#looks">漏光样式</a>
+          <a href="../../zh-hans/install/" aria-current="page">开始安装</a>
+          <a href="../../zh-hans/#faq">常见问题</a>
+          <a href="../../zh-hans/guide/">使用指南</a>
+        </nav>
+        <a class="github" href="https://github.com/brunolimawd/grkit-light-leak" aria-label="GitHub">
+          <img src="../../assets/github.svg" width="22" height="22" alt="">
+        </a>
+        <nav class="language-fallback" aria-label="语言">
+          <a href="../../install/" lang="en" hreflang="en">English</a>
+          <a href="../../pt-br/install/" lang="pt-BR" hreflang="pt-BR">Português</a>
+        </nav>
+        <span class="language-select" hidden>
+          <select class="button" aria-label="语言" data-language>
+            <option value="../../install/" lang="en">English</option>
+            <option value="../../pt-br/install/" lang="pt-BR">Português</option>
+            <option value="../../zh-hans/install/" lang="zh-Hans" selected>简体中文</option>
+          </select>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="install-main" tabindex="-1">
+    <h1 class="install-title">安装 Light Leak（漏光）</h1>
+
+    <section class="section" id="download" aria-labelledby="download-title">
+      <h2 id="download-title">如何安装</h2>
+      <div class="section-body">
+        <div class="install-method">
+          <h3>将 <code>LITLEAK.GRM</code> 复制到 SD 卡</h3>
+          <p>漏光是独立的非官方 GRKit 模块，从 SD 卡加载，不修改相机固件。</p>
+        </div>
+        <a class="download landing-install landing-safe-install" href="https://github.com/brunolimawd/grkit-light-leak/releases/download/v0.1.0-beta.1/LITLEAK.GRM">下载 LITLEAK.GRM</a>
+        <p class="note">测试版 <a href="https://github.com/brunolimawd/grkit-light-leak/releases/tag/v0.1.0-beta.1">v0.1.0-beta.1</a> · GRM 修订号 16</p>
+      </div>
+    </section>
+
+    <section class="section" id="compatibility" aria-labelledby="compatibility-title">
+      <h2 id="compatibility-title">兼容性</h2>
+      <div class="section-body">
+        <p>漏光模块已在<strong>理光 GR III（固件 2.10）</strong>上通过真机测试。GR IIIx、GR IV 和其他机型或固件组合尚未用此模块进行真机验证。</p>
+        <table class="table" aria-label="漏光模块的真机测试情况">
+          <thead><tr><th scope="col">机型</th><th scope="col">固件</th><th scope="col">状态</th></tr></thead>
+          <tbody><tr><th scope="row">理光 GR III</th><td>2.10</td><td>已通过真机测试</td></tr></tbody>
+        </table>
+        <p>需要支持<strong>模块 ABI 2.7</strong> 的 GRKit 运行环境，且至少还有一个外部模块空位。参考构建使用 GRKit 1.6.6。请参阅<a href="https://github.com/brunolimawd/grkit-light-leak#compatibility">兼容性记录（英文）</a>和 <a href="https://grkit.app/zh-hans/install/">GRKit 官方安装指南</a>。</p>
+      </div>
+    </section>
+
+    <section class="section" id="install" aria-labelledby="install-title">
+      <h2 id="install-title">复制文件</h2>
+      <div class="section-body">
+        <ol>
+          <li>下载 <code>LITLEAK.GRM</code>。取出 SD 卡前，先关闭相机。</li>
+          <li>从 SD 卡根目录起，将文件复制到 <code>GRKIT/MODULES/LITLEAK.GRM</code>。更新时直接替换旧文件。不要复制到 <code>SCRIPT/GRKIT/MODULES</code>。</li>
+          <li>插回 SD 卡并开机，等 ADJ 菜单中出现 <strong>GRK</strong> 后，打开 <strong>ADJ → GRK → 漏光</strong>。</li>
+        </ol>
+        <p>如果没有显示「漏光」，请检查 <code>GRKIT/REPORT.TXT</code>，并确认 GRKit 还有外部模块空位。</p>
+      </div>
+    </section>
+
+    <section class="section" id="remove" aria-labelledby="remove-title">
+      <h2 id="remove-title">卸载或恢复</h2>
+      <div class="section-body">
+        <p>关闭相机，再从 SD 卡删除 <code>GRKIT/MODULES/LITLEAK.GRM</code>，即可卸载。如果相机在菜单打开前停止响应，请按 <a href="https://github.com/ahonn/grkit/blob/61dd9a697668d809939c2a75d402d76e418ff6fc/docs/modules.md#if-the-camera-stops-at-power-on">GRKit 模块恢复说明（英文）</a>操作，或参阅<a href="https://grkit.app/zh-hans/docs/recovery/">简体中文恢复指南</a>。</p>
+        <p><a href="../guide/">继续阅读使用指南</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <div class="footer-group">
+        <p class="footer-heading">Light Leak</p>
+        <ul>
+          <li><a href="../../zh-hans/install/">开始安装</a></li>
+          <li><a href="../../zh-hans/#looks">漏光样式</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <p class="footer-heading">帮助</p>
+        <ul>
+          <li><a href="../../zh-hans/guide/">使用指南</a></li>
+          <li><a href="../../zh-hans/#faq">常见问题</a></li>
+          <li><a href="../../zh-hans/install/#compatibility">兼容性</a></li>
+          <li><a href="https://grkit.app/zh-hans/docs/recovery/">恢复指南</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <p class="footer-heading">项目</p>
+        <ul>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/releases">发布版本</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/issues">反馈问题</a></li>
+          <li><a href="https://grkit.app/zh-hans/">GRKit 项目</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <p class="footer-heading">法律信息</p>
+        <ul>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/tree/gh-pages#sample-photo-and-credits">照片和设计鸣谢</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/blob/gh-pages/LICENSE">MIT 许可证</a></li>
+          <li><a href="../../assets/IBM-Plex-OFL.txt">IBM Plex</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <p>Light Leak（漏光）是由 brunolimawd 维护的独立模块，不属于 GRKit 官方发行版，也与理光无隶属关系。</p>
+      <a href="https://github.com/brunolimawd/grkit-light-leak/releases">Light Leak · v0.1.0-beta.1</a>
+    </div>
+  </footer>
+</body>
+</html>

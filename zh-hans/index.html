@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-52MK6S86');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="WY7yHssscdXgSWYU2ULRGTT_V7PKsHe5BuMh1zgmBQY" />
+  <title>Light Leak（漏光）— 理光 GR III 的 GRKit 胶片漏光模块</title>
+  <meta name="description" content="Light Leak（漏光）是独立的非官方 GRKit 模块，为相机拍摄的 JPEG 加上六种胶片漏光效果。查看样片对比、机型兼容性和安装说明。">
+  <link rel="canonical" href="https://brunolimawd.github.io/grkit-light-leak/zh-hans/">
+  <link rel="alternate" hreflang="en" href="https://brunolimawd.github.io/grkit-light-leak/">
+  <link rel="alternate" hreflang="pt-BR" href="https://brunolimawd.github.io/grkit-light-leak/pt-br/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://brunolimawd.github.io/grkit-light-leak/zh-hans/">
+  <link rel="alternate" hreflang="x-default" href="https://brunolimawd.github.io/grkit-light-leak/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Light Leak for GRKit">
+  <meta property="og:title" content="Light Leak（漏光）— 理光 GR III 的 GRKit 胶片漏光模块">
+  <meta property="og:description" content="查看同一张照片的六种漏光效果，了解如何安装这个非官方 GRKit 模块。">
+  <meta property="og:url" content="https://brunolimawd.github.io/grkit-light-leak/zh-hans/">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="pt_BR">
+  <meta property="og:image" content="https://brunolimawd.github.io/grkit-light-leak/assets/share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="带条纹遮阳篷的餐车和站在车外的顾客 — 缝隙光束">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="../assets/mark.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script defer src="../assets/site.js"></script>
+</head>
+<body class="page">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-52MK6S86"
+  height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="masthead">
+    <div class="masthead-top">
+      <div class="masthead-title">
+        <a class="masthead-name" href="../zh-hans/">Light <span class="kit">Leak</span></a>
+        <a class="masthead-version" href="https://github.com/brunolimawd/grkit-light-leak/releases">beta</a>
+      </div>
+      <div class="languages">
+        <nav class="masthead-nav" aria-label="主导航">
+          <a href="../zh-hans/#looks">漏光样式</a>
+          <a href="../zh-hans/install/">开始安装</a>
+          <a href="../zh-hans/#faq">常见问题</a>
+          <a href="../zh-hans/guide/">使用指南</a>
+        </nav>
+        <a class="github" href="https://github.com/brunolimawd/grkit-light-leak" aria-label="GitHub">
+          <img src="../assets/github.svg" width="22" height="22" alt="">
+        </a>
+        <nav class="language-fallback" aria-label="语言">
+          <a href="../" lang="en" hreflang="en">English</a>
+          <a href="../pt-br/" lang="pt-BR" hreflang="pt-BR">Português</a>
+        </nav>
+        <span class="language-select" hidden>
+          <select class="button" aria-label="语言" data-language>
+            <option value="../" lang="en">English</option>
+            <option value="../pt-br/" lang="pt-BR">Português</option>
+            <option value="../zh-hans/" lang="zh-Hans" selected>简体中文</option>
+          </select>
+        </span>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="landing-hero" id="looks" aria-labelledby="hero-title">
+      <div class="landing-copy">
+        <h1 class="lead" id="hero-title"><span class="lead-line">给理光 GR 加上胶片漏光。</span> <span class="lead-line">无需刷机。</span></h1>
+        <div class="landing-action">
+          <div class="landing-action-links">
+            <a class="download landing-install" href="install/">开始安装</a>
+            <a class="landing-upstream" href="https://grkit.app/zh-hans/">访问 GRKit</a>
+          </div>
+          <p class="note">从 SD 卡加载的非官方 GRKit 模块。已在理光 GR III（固件 2.10）上通过真机测试。效果只应用于 JPEG 及其预览，不修改 RAW 文件。</p>
+        </div>
+      </div>
+      <div class="landing-looks" data-preview data-alt="带条纹遮阳篷的餐车和站在车外的顾客">
+        <div class="frame">
+          <div class="image-comparison">
+            <img src="../assets/sample-original.webp" srcset="../assets/sample-original-small.webp 600w, ../assets/sample-original.webp 1200w" sizes="(max-width: 860px) 92vw, (max-width: 1280px) 48vw, 607px" width="1200" height="800" fetchpriority="high" alt="带条纹遮阳篷的餐车和站在车外的顾客 — 未添加漏光">
+            <div class="comparison-effect">
+              <img src="../assets/slit-flare-large.webp" srcset="../assets/slit-flare.webp 600w, ../assets/slit-flare-large.webp 1200w" sizes="(max-width: 860px) 92vw, (max-width: 1280px) 48vw, 607px" width="1200" height="800" data-preview-image alt="带条纹遮阳篷的餐车和站在车外的顾客 — 缝隙光束">
+            </div>
+            <input class="comparison-control" type="range" min="0" max="100" value="50" aria-label="拖动滑块，对比添加漏光前后的照片" hidden>
+            <span class="comparison-handle" aria-hidden="true">
+              <span class="comparison-knob" hidden><svg width="19" height="12" viewBox="0 0 19 12" fill="currentColor"><path d="M7 2.5 3 6l4 3.5zm5 0L16 6l-4 3.5z"/></svg></span>
+            </span>
+          </div>
+          <span class="tag" data-preview-label lang="zh-Hans">缝隙光束</span>
+        </div>
+        <div class="landing-looks-meta">
+          <p class="landing-look-name" data-preview-label aria-live="polite" lang="zh-Hans">缝隙光束</p>
+          <p class="note"><a href="https://www.flickr.com/photos/mujitra/53311001084/">MIKI Yoshihito</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · RICOH GR IIIx · 非机内演示</p>
+        </div>
+        <div class="landing-strip" role="group" aria-label="漏光样式" data-preview-options hidden>
+          <button type="button" class="landing-film" aria-pressed="true" data-name="缝隙光束" data-image="../assets/slit-flare-large.webp" data-srcset="../assets/slit-flare.webp 600w, ../assets/slit-flare-large.webp 1200w"><span class="landing-icon"><img src="../assets/2-slit.png" width="40" height="40" alt=""></span><span lang="zh-Hans">缝隙光束</span></button>
+          <button type="button" class="landing-film" aria-pressed="false" data-name="烧灼边缘" data-image="../assets/burnt-edge-large.webp" data-srcset="../assets/burnt-edge.webp 600w, ../assets/burnt-edge-large.webp 1200w"><span class="landing-icon"><img src="../assets/3-burnt.png" width="40" height="40" alt=""></span><span lang="zh-Hans">烧灼边缘</span></button>
+          <button type="button" class="landing-film" aria-pressed="false" data-name="胶片光带" data-image="../assets/film-band-large.webp" data-srcset="../assets/film-band.webp 600w, ../assets/film-band-large.webp 1200w"><span class="landing-icon"><img src="../assets/4-band.png" width="40" height="40" alt=""></span><span lang="zh-Hans">胶片光带</span></button>
+          <button type="button" class="landing-film" aria-pressed="false" data-name="琥珀光幕" data-image="../assets/amber-veil-large.webp" data-srcset="../assets/amber-veil.webp 600w, ../assets/amber-veil-large.webp 1200w"><span class="landing-icon"><img src="../assets/5-veil.png" width="40" height="40" alt=""></span><span lang="zh-Hans">琥珀光幕</span></button>
+          <button type="button" class="landing-film" aria-pressed="false" data-name="棱镜光弧" data-image="../assets/prismatic-arc-large.webp" data-srcset="../assets/prismatic-arc.webp 600w, ../assets/prismatic-arc-large.webp 1200w"><span class="landing-icon"><img src="../assets/6-prism.png" width="40" height="40" alt=""></span><span lang="zh-Hans">棱镜光弧</span></button>
+          <button type="button" class="landing-film" aria-pressed="false" data-name="彩色光雾" data-image="../assets/color-fog-large.webp" data-srcset="../assets/color-fog.webp 600w, ../assets/color-fog-large.webp 1200w"><span class="landing-icon"><img src="../assets/7-fog.png" width="40" height="40" alt=""></span><span lang="zh-Hans">彩色光雾</span></button>
+        </div>
+        <noscript><p class="note"><a href="guide/#styles">在使用指南中查看六种样式</a></p></noscript>
+      </div>
+    </section>
+
+    <section class="section" id="strength" aria-labelledby="strength-title">
+      <h2 id="strength-title">强度</h2>
+      <div class="section-body">
+        <p class="landing-text">强度决定漏光有多明显。用同一张照片对比缝隙光束的三档强度。</p>
+        <div class="landing-framing" data-preview data-alt="带条纹遮阳篷的餐车和站在车外的顾客 — 缝隙光束">
+          <div class="landing-choices" role="group" aria-label="强度" data-preview-options hidden>
+            <button type="button" class="button small landing-ratio" aria-pressed="false" data-image="../assets/slit-weak.webp" data-name="弱">弱</button>
+            <button type="button" class="button small landing-ratio" aria-pressed="true" data-image="../assets/slit-flare.webp" data-name="中">中</button>
+            <button type="button" class="button small landing-ratio" aria-pressed="false" data-image="../assets/slit-strong.webp" data-name="强">强</button>
+          </div>
+          <div class="landing-framing-views">
+            <figure>
+              <div class="frame"><img src="../assets/slit-flare.webp" width="600" height="400" data-preview-image loading="lazy" decoding="async" alt="带条纹遮阳篷的餐车和站在车外的顾客 — 缝隙光束, 中"></div>
+              <figcaption><b>JPEG</b> · 缝隙光束 · <span data-preview-label aria-live="polite">中</span></figcaption>
+            </figure>
+            <figure>
+              <div class="frame"><img src="../assets/sample-original-small.webp" width="600" height="400" loading="lazy" decoding="async" alt="带条纹遮阳篷的餐车和站在车外的顾客 — 未添加漏光"></div>
+              <figcaption><b>未添加漏光</b></figcaption>
+            </figure>
+          </div>
+        </div>
+        <p class="note">上方的样式演示统一使用中等强度、原始位置和变化 1。</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="details-title">
+      <h2 id="details-title">更多设置</h2>
+      <div class="section-body">
+        <div class="landing-details">
+          <figure class="landing-detail" data-preview data-alt="带条纹遮阳篷的餐车和站在车外的顾客 — 缝隙光束">
+            <div class="frame"><img src="../assets/slit-flare.webp" width="600" height="400" data-preview-image loading="lazy" decoding="async" alt="带条纹遮阳篷的餐车和站在车外的顾客 — 缝隙光束, 右侧"><span class="tag" data-preview-label>右侧</span></div>
+            <figcaption>
+              <h3>漏光位置</h3>
+              <p>选择光线从哪一侧进入画面。「原始位置」使用当前样式的默认入光侧。</p>
+              <div class="landing-choices" role="group" aria-label="漏光位置" data-preview-options hidden>
+                <button type="button" class="button small" aria-pressed="true" data-image="../assets/slit-flare.webp" data-name="右侧">右侧</button>
+            <button type="button" class="button small" aria-pressed="false" data-image="../assets/slit-left.webp" data-name="左侧">左侧</button>
+            <button type="button" class="button small" aria-pressed="false" data-image="../assets/slit-top.webp" data-name="顶部">顶部</button>
+            <button type="button" class="button small" aria-pressed="false" data-image="../assets/slit-bottom.webp" data-name="底部">底部</button>
+              </div>
+              <p class="note"><a href="https://www.flickr.com/photos/mujitra/53311001084/">MIKI Yoshihito</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></p>
+            </figcaption>
+          </figure>
+          <figure class="landing-detail" data-preview data-alt="带条纹遮阳篷的餐车和站在车外的顾客 — 缝隙光束">
+            <div class="frame"><img src="../assets/slit-flare.webp" width="600" height="400" data-preview-image loading="lazy" decoding="async" alt="带条纹遮阳篷的餐车和站在车外的顾客 — 缝隙光束, 变化 1"><span class="tag" data-preview-label>变化 1</span></div>
+            <figcaption>
+              <h3>变化</h3>
+              <p>不切换样式，也可以改变漏光的形状和配色。变化 1 保留原始效果。</p>
+              <div class="landing-choices" role="group" aria-label="变化" data-preview-options hidden>
+                <button type="button" class="button small" aria-pressed="true" data-image="../assets/slit-flare.webp" data-name="变化 1">变化 1</button>
+            <button type="button" class="button small" aria-pressed="false" data-image="../assets/slit-variation-2.webp" data-name="变化 2">变化 2</button>
+            <button type="button" class="button small" aria-pressed="false" data-image="../assets/slit-variation-3.webp" data-name="变化 3">变化 3</button>
+              </div>
+              <p class="note"><a href="https://www.flickr.com/photos/mujitra/53311001084/">MIKI Yoshihito</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="camera-title">
+      <h2 id="camera-title">在相机里</h2>
+      <div class="section-body">
+        <div class="landing-screens">
+          <figure>
+            <div class="camera-diagram" aria-hidden="true">
+              <p>菜单示意 · ADJ → GRK</p>
+              <div class="camera-diagram-tiles">
+                <img src="../assets/0-module.png" width="40" height="40" alt="" loading="lazy">
+                <img src="../assets/2-slit.png" width="40" height="40" alt="" loading="lazy">
+                <img src="../assets/3-burnt.png" width="40" height="40" alt="" loading="lazy">
+                <img src="../assets/4-band.png" width="40" height="40" alt="" loading="lazy">
+              </div>
+              <p>漏光</p>
+            </div>
+            <figcaption>按下 ADJ 拨杆，选择 GRK，再打开「漏光」。</figcaption>
+          </figure>
+          <figure>
+            <div class="camera-diagram" aria-hidden="true">
+              <p>菜单示意 · Fn</p>
+              <p>强度 · 漏光位置 · 变化</p>
+              <p>图标显示</p>
+            </div>
+            <figcaption>在「漏光」页面按 Fn，调整各项设置。 <a href="guide/">使用指南</a></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">安装前须知</h2>
+      <div class="section-body faq">
+        <details><summary>漏光是 GRKit 自带的吗？</summary><p>不是。它是独立的非官方模块，使用前须先安装兼容的 GRKit。</p></details>
+        <details><summary>在哪些相机上测试过？</summary><p>已在理光 GR III（固件 2.10）上进行真机测试。拍摄示例照片的 GR IIIx 和其他机型尚未用此模块验证。</p></details>
+        <details><summary>会改动 RAW 文件吗？</summary><p>不会。漏光只写入 JPEG 及其预览，不修改 RAW 的传感器数据。</p></details>
+        <details><summary>拍摄前能看到漏光吗？</summary><p>不能。取景图标会提示当前样式，但效果只出现在保存后的 JPEG 及其预览中。</p></details>
+        <details><summary>LITLEAK.GRM 放在哪里？</summary><p>从 SD 卡根目录起，将文件复制到 <code>GRKIT/MODULES/LITLEAK.GRM</code>。</p></details>
+        <details><summary>怎么卸载？</summary><p>关闭相机，从 SD 卡删除 <code>GRKIT/MODULES/LITLEAK.GRM</code> 即可。无需刷机。</p></details>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="safe-title">
+      <h2 id="safe-title">放心安装</h2>
+      <div class="section-body">
+        <ul class="landing-facts">
+          <li><h3>无需刷机</h3><p>模块从 SD 卡加载，不修改相机固件。</p></li>
+          <li><h3>卸载简单</h3><p>从 SD 卡删除模块文件即可卸载。</p></li>
+          <li><h3>不改动 RAW</h3><p>效果只应用于 JPEG 及其预览。</p></li>
+        </ul>
+        <a class="download landing-install landing-safe-install" href="install/">开始安装</a>
+      </div>
+    </section>
+
+    <section class="section" id="original-project" aria-labelledby="original-project-title">
+      <h2 id="original-project-title">GRKit 项目</h2>
+      <div class="section-body">
+        <p class="landing-text">Light Leak（漏光）是为 <a href="https://grkit.app/zh-hans/">GRKit</a> 开发的独立模块。感谢 <a href="https://github.com/ahonn">Yuexun Jiang (@ahonn)</a> 用心开发和维护 GRKit，让这样的独立模块成为可能。</p>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-links">
+      <div class="footer-group">
+        <p class="footer-heading">Light Leak</p>
+        <ul>
+          <li><a href="../zh-hans/install/">开始安装</a></li>
+          <li><a href="../zh-hans/#looks">漏光样式</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <p class="footer-heading">帮助</p>
+        <ul>
+          <li><a href="../zh-hans/guide/">使用指南</a></li>
+          <li><a href="../zh-hans/#faq">常见问题</a></li>
+          <li><a href="../zh-hans/install/#compatibility">兼容性</a></li>
+          <li><a href="https://grkit.app/zh-hans/docs/recovery/">恢复指南</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <p class="footer-heading">项目</p>
+        <ul>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/releases">发布版本</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/issues">反馈问题</a></li>
+          <li><a href="https://grkit.app/zh-hans/">GRKit 项目</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <p class="footer-heading">法律信息</p>
+        <ul>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/tree/gh-pages#sample-photo-and-credits">照片和设计鸣谢</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/blob/gh-pages/LICENSE">MIT 许可证</a></li>
+          <li><a href="../assets/IBM-Plex-OFL.txt">IBM Plex</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <p>Light Leak（漏光）是由 brunolimawd 维护的独立模块，不属于 GRKit 官方发行版，也与理光无隶属关系。</p>
+      <a href="https://github.com/brunolimawd/grkit-light-leak/releases">Light Leak · v0.1.0-beta.1</a>
+    </div>
+  </footer>
+</body>
+</html>

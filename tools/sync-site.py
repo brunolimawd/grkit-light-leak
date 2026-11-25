@@ -7,13 +7,15 @@ import re
 
 
 ROOT = Path(__file__).resolve().parent.parent
+SITE = "https://brunolimawd.github.io/grkit-light-leak/"
 REPO = "https://github.com/brunolimawd/grkit-light-leak"
 RELEASES = f"{REPO}/releases"
 GRKIT = "https://grkit.app/"
 GRKIT_MAINTAINER = "https://github.com/ahonn"
-RECOVERY = "https://grkit.app/docs/recovery/"
 PHOTO = "https://www.flickr.com/photos/mujitra/53311001084/"
 PHOTO_LICENSE = "https://creativecommons.org/licenses/by/2.0/"
+PAGES = ("", "install", "guide")
+OG_LOCALES = {"en": "en_US", "pt-BR": "pt_BR", "zh-Hans": "zh_CN"}
 GTM_ID = "GTM-52MK6S86"
 GTM_HEAD = """  <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -99,11 +101,50 @@ COPY = {
         "safe": ("Instalação reversível", ("Sem gravar firmware", "O módulo roda do cartão SD sem modificar o firmware da câmera."), ("Fácil de remover", "Para desinstalar, apague o arquivo do módulo do cartão."), ("Arquivos RAW intactos", "O efeito é aplicado apenas no JPEG e nas prévias.")),
         "browse": "Conheça os seis estilos no guia",
     },
+    "zh-Hans": {
+        "name": "简体中文",
+        "language": "语言",
+        "nav": "主导航",
+        "links": ("漏光样式", "开始安装", "常见问题", "使用指南"),
+        "help": ("帮助", "兼容性", "恢复指南"),
+        "project": ("项目", "发布版本", "反馈问题", "GRKit 项目"),
+        "legal": ("法律信息", "照片和设计鸣谢", "MIT 许可证"),
+        "disclaimer": "Light Leak（漏光）是由 brunolimawd 维护的独立模块，不属于 GRKit 官方发行版，也与理光无隶属关系。",
+        "lead": ("给理光 GR 加上胶片漏光。", "无需刷机。"),
+        "summary": "从 SD 卡加载的非官方 GRKit 模块。已在理光 GR III（固件 2.10）上通过真机测试。效果只应用于 JPEG 及其预览，不修改 RAW 文件。",
+        "upstream": ("GRKit 项目", "访问 GRKit", "Light Leak（漏光）是为 {grkit} 开发的独立模块。感谢 {maintainer} 用心开发和维护 GRKit，让这样的独立模块成为可能。"),
+        "photo": "带条纹遮阳篷的餐车和站在车外的顾客",
+        "compare": "拖动滑块，对比添加漏光前后的照片",
+        "before": "未添加漏光",
+        "demo": "非机内演示",
+        "preview": "上方的样式演示统一使用中等强度、原始位置和变化 1。",
+        "controls": ("强度", "强度决定漏光有多明显。用同一张照片对比缝隙光束的三档强度。", ("弱", "中", "强"), "JPEG"),
+        "details": ("更多设置", "漏光位置", "选择光线从哪一侧进入画面。「原始位置」使用当前样式的默认入光侧。", ("右侧", "左侧", "顶部", "底部"), "变化", "不切换样式，也可以改变漏光的形状和配色。变化 1 保留原始效果。", ("1", "2", "3")),
+        "camera": ("在相机里", "菜单示意", "按下 ADJ 拨杆，选择 GRK，再打开「漏光」。", "在「漏光」页面按 Fn，调整各项设置。"),
+        "module": "漏光",
+        "show-icon": "图标显示",
+        "styles": ("缝隙光束", "烧灼边缘", "胶片光带", "琥珀光幕", "棱镜光弧", "彩色光雾"),
+        "faq": (
+            ("漏光是 GRKit 自带的吗？", "不是。它是独立的非官方模块，使用前须先安装兼容的 GRKit。"),
+            ("在哪些相机上测试过？", "已在理光 GR III（固件 2.10）上进行真机测试。拍摄示例照片的 GR IIIx 和其他机型尚未用此模块验证。"),
+            ("会改动 RAW 文件吗？", "不会。漏光只写入 JPEG 及其预览，不修改 RAW 的传感器数据。"),
+            ("拍摄前能看到漏光吗？", "不能。取景图标会提示当前样式，但效果只出现在保存后的 JPEG 及其预览中。"),
+            ("LITLEAK.GRM 放在哪里？", "从 SD 卡根目录起，将文件复制到 <code>GRKIT/MODULES/LITLEAK.GRM</code>。"),
+            ("怎么卸载？", "关闭相机，从 SD 卡删除 <code>GRKIT/MODULES/LITLEAK.GRM</code> 即可。无需刷机。"),
+        ),
+        "faq-title": "安装前须知",
+        "safe": ("放心安装", ("无需刷机", "模块从 SD 卡加载，不修改相机固件。"), ("卸载简单", "从 SD 卡删除模块文件即可卸载。"), ("不改动 RAW", "效果只应用于 JPEG 及其预览。")),
+        "browse": "在使用指南中查看六种样式",
+    },
 }
 
 
 def lang_path(lang, page=""):
-    return ("" if lang == "en" else "pt-br/") + (f"{page}/" if page else "")
+    return ("" if lang == "en" else f"{lang.lower()}/") + (f"{page}/" if page else "")
+
+
+def grkit_home(lang):
+    return GRKIT + ("zh-hans/" if lang == "zh-Hans" else "")
 
 
 def link(url, name, current=False):
@@ -113,8 +154,6 @@ def link(url, name, current=False):
 
 def header(lang, page, root):
     text = COPY[lang]
-    other = "pt-BR" if lang == "en" else "en"
-    other_url = root + lang_path(other, page)
     home = root + lang_path(lang)
     urls = (home + "#looks", home + "install/", home + "#faq", home + "guide/")
     current = {"install": 1, "guide": 3}.get(page)
@@ -126,6 +165,10 @@ def header(lang, page, root):
         f'            <option value="{root}{lang_path(code, page)}" lang="{code}"'
         f'{" selected" if code == lang else ""}>{item["name"]}</option>'
         for code, item in COPY.items()
+    )
+    alternatives = "\n".join(
+        f'          <a href="{root}{lang_path(code, page)}" lang="{code}" hreflang="{code}">{item["name"]}</a>'
+        for code, item in COPY.items() if code != lang
     )
     return f"""  <header class="masthead">
     <div class="masthead-top">
@@ -140,7 +183,9 @@ def header(lang, page, root):
         <a class="github" href="{REPO}" aria-label="GitHub">
           <img src="{root}assets/github.svg" width="22" height="22" alt="">
         </a>
-        <a class="language-fallback" href="{other_url}" lang="{other}" hreflang="{other}">{COPY[other]["name"]}</a>
+        <nav class="language-fallback" aria-label="{text["language"]}">
+{alternatives}
+        </nav>
         <span class="language-select" hidden>
           <select class="button" aria-label="{text["language"]}" data-language>
 {options}
@@ -160,8 +205,8 @@ def footer(lang, root):
     legal, credits, license_name = text["legal"]
     groups = (
         ("Light Leak", ((home + "install/", install), (home + "#looks", looks), (REPO, "GitHub"))),
-        (help_title, ((home + "guide/", guide), (home + "#faq", faq), (home + "install/#compatibility", compat), (RECOVERY, recover))),
-        (project, ((RELEASES, releases), (f"{REPO}/issues", issues), (GRKIT, grkit))),
+        (help_title, ((home + "guide/", guide), (home + "#faq", faq), (home + "install/#compatibility", compat), (grkit_home(lang) + "docs/recovery/", recover))),
+        (project, ((RELEASES, releases), (f"{REPO}/issues", issues), (grkit_home(lang), grkit))),
         (legal, ((f"{REPO}/tree/gh-pages#sample-photo-and-credits", credits), (f"{REPO}/blob/gh-pages/LICENSE", license_name), (root + "assets/IBM-Plex-OFL.txt", "IBM Plex"))),
     )
     columns = []
@@ -192,9 +237,12 @@ def home_main(lang, root):
     camera, diagram, adj, fn = t["camera"]
     safe, *facts = t["safe"]
     install = t["links"][1]
+    style_names = t.get("styles", tuple(name for name, _, _ in STYLES))
+    style_lang = lang if "styles" in t else "en"
+    first_style = style_names[0]
     upstream_title, upstream_link, upstream_credit = t["upstream"]
     upstream_credit = upstream_credit.format(
-        grkit=link(GRKIT, "GRKit"),
+        grkit=link(grkit_home(lang), "GRKit"),
         maintainer=link(GRKIT_MAINTAINER, "Yuexun Jiang (@ahonn)"),
     )
 
@@ -236,14 +284,14 @@ def home_main(lang, root):
         return "\n            ".join(buttons)
 
     tiles = []
-    for idx, (name, file, icon) in enumerate(STYLES):
+    for idx, ((_, file, icon), name) in enumerate(zip(STYLES, style_names)):
         pressed = "true" if idx == 0 else "false"
         tiles.append(
             f'          <button type="button" class="landing-film" aria-pressed="{pressed}" '
             f'data-name="{name}" data-image="{assets}{file}-large.webp" '
             f'data-srcset="{assets}{file}.webp 600w, {assets}{file}-large.webp 1200w">'
             f'<span class="landing-icon"><img src="{assets}{icon}.png" width="40" height="40" alt=""></span>'
-            f'<span lang="en">{name}</span></button>'
+            f'<span lang="{style_lang}">{name}</span></button>'
         )
     full_tiles = "\n".join(tiles)
     faq = "\n".join(
@@ -261,7 +309,7 @@ def home_main(lang, root):
         <div class="landing-action">
           <div class="landing-action-links">
             <a class="download landing-install" href="install/">{install}</a>
-            <a class="landing-upstream" href="{GRKIT}">{upstream_link}</a>
+            <a class="landing-upstream" href="{grkit_home(lang)}">{upstream_link}</a>
           </div>
           <p class="note">{t["summary"]}</p>
         </div>
@@ -271,17 +319,17 @@ def home_main(lang, root):
           <div class="image-comparison">
             {image("sample-original", t["photo"] + " — " + t["before"], responsive=True, eager=True)}
             <div class="comparison-effect">
-              {image("slit-flare", t["photo"] + " — Slit Flare", responsive=True, target=True, eager=True)}
+              {image("slit-flare", t["photo"] + " — " + first_style, responsive=True, target=True, eager=True)}
             </div>
             <input class="comparison-control" type="range" min="0" max="100" value="50" aria-label="{t["compare"]}" hidden>
             <span class="comparison-handle" aria-hidden="true">
               <span class="comparison-knob" hidden><svg width="19" height="12" viewBox="0 0 19 12" fill="currentColor"><path d="M7 2.5 3 6l4 3.5zm5 0L16 6l-4 3.5z"/></svg></span>
             </span>
           </div>
-          <span class="tag" data-preview-label lang="en">Slit Flare</span>
+          <span class="tag" data-preview-label lang="{style_lang}">{first_style}</span>
         </div>
         <div class="landing-looks-meta">
-          <p class="landing-look-name" data-preview-label aria-live="polite" lang="en">Slit Flare</p>
+          <p class="landing-look-name" data-preview-label aria-live="polite" lang="{style_lang}">{first_style}</p>
           <p class="note">{credit(camera=True)} · {t["demo"]}</p>
         </div>
         <div class="landing-strip" role="group" aria-label="{t["links"][0]}" data-preview-options hidden>
@@ -295,14 +343,14 @@ def home_main(lang, root):
       <h2 id="strength-title">{title}</h2>
       <div class="section-body">
         <p class="landing-text">{intro}</p>
-        <div class="landing-framing" data-preview data-alt="{escape(t["photo"], quote=True)} — Slit Flare">
+        <div class="landing-framing" data-preview data-alt="{escape(t["photo"], quote=True)} — {first_style}">
           <div class="landing-choices" role="group" aria-label="{title}" data-preview-options hidden>
             {options(forces, ("slit-weak", "slit-flare", "slit-strong"), 1, mono=True)}
           </div>
           <div class="landing-framing-views">
             <figure>
-              <div class="frame">{image("slit-flare", t["photo"] + " — Slit Flare, " + forces[1], target=True)}</div>
-              <figcaption><b>{jpeg}</b> · Slit Flare · <span data-preview-label aria-live="polite">{forces[1]}</span></figcaption>
+              <div class="frame">{image("slit-flare", t["photo"] + " — " + first_style + ", " + forces[1], target=True)}</div>
+              <figcaption><b>{jpeg}</b> · {first_style} · <span data-preview-label aria-live="polite">{forces[1]}</span></figcaption>
             </figure>
             <figure>
               <div class="frame">{image("sample-original-small", t["photo"] + " — " + t["before"])}</div>
@@ -318,8 +366,8 @@ def home_main(lang, root):
       <h2 id="details-title">{more}</h2>
       <div class="section-body">
         <div class="landing-details">
-          <figure class="landing-detail" data-preview data-alt="{escape(t["photo"], quote=True)} — Slit Flare">
-            <div class="frame">{image("slit-flare", t["photo"] + " — Slit Flare, " + sides[0], target=True)}<span class="tag" data-preview-label>{sides[0]}</span></div>
+          <figure class="landing-detail" data-preview data-alt="{escape(t["photo"], quote=True)} — {first_style}">
+            <div class="frame">{image("slit-flare", t["photo"] + " — " + first_style + ", " + sides[0], target=True)}<span class="tag" data-preview-label>{sides[0]}</span></div>
             <figcaption>
               <h3>{position}</h3>
               <p>{position_note}</p>
@@ -329,8 +377,8 @@ def home_main(lang, root):
               <p class="note">{credit()}</p>
             </figcaption>
           </figure>
-          <figure class="landing-detail" data-preview data-alt="{escape(t["photo"], quote=True)} — Slit Flare">
-            <div class="frame">{image("slit-flare", t["photo"] + " — Slit Flare, " + variation + " 1", target=True)}<span class="tag" data-preview-label>{variation} 1</span></div>
+          <figure class="landing-detail" data-preview data-alt="{escape(t["photo"], quote=True)} — {first_style}">
+            <div class="frame">{image("slit-flare", t["photo"] + " — " + first_style + ", " + variation + " 1", target=True)}<span class="tag" data-preview-label>{variation} 1</span></div>
             <figcaption>
               <h3>{variation}</h3>
               <p>{variation_note}</p>
@@ -357,7 +405,7 @@ def home_main(lang, root):
                 <img src="{assets}3-burnt.png" width="40" height="40" alt="" loading="lazy">
                 <img src="{assets}4-band.png" width="40" height="40" alt="" loading="lazy">
               </div>
-              <p>Light Leak</p>
+              <p>{t.get("module", "Light Leak")}</p>
             </div>
             <figcaption>{adj}</figcaption>
           </figure>
@@ -365,7 +413,7 @@ def home_main(lang, root):
             <div class="camera-diagram" aria-hidden="true">
               <p>{diagram} · Fn</p>
               <p>{title} · {position} · {variation}</p>
-              <p>Show Icon</p>
+              <p>{t.get("show-icon", "Show Icon")}</p>
             </div>
             <figcaption>{fn} {link("guide/", t["links"][3])}</figcaption>
           </figure>
@@ -406,10 +454,37 @@ def replace(pattern, source, markup):
     return result
 
 
+def localization_links(lang, page):
+    links = [f'  <link rel="canonical" href="{SITE}{lang_path(lang, page)}">']
+    links.extend(
+        f'  <link rel="alternate" hreflang="{code}" href="{SITE}{lang_path(code, page)}">'
+        for code in COPY
+    )
+    links.append(f'  <link rel="alternate" hreflang="x-default" href="{SITE}{lang_path("en", page)}">')
+    return "\n".join(links) + "\n"
+
+
+def open_graph_locales(lang):
+    tags = [f'  <meta property="og:locale" content="{OG_LOCALES[lang]}">']
+    tags.extend(
+        f'  <meta property="og:locale:alternate" content="{locale}">'
+        for code, locale in OG_LOCALES.items() if code != lang
+    )
+    return "\n".join(tags) + "\n"
+
+
 def sync(verify=False):
     stale = []
+
+    def write(path, before, source):
+        if source != before:
+            if verify:
+                stale.append(str(path.relative_to(ROOT)))
+            else:
+                path.write_text(source, encoding="utf-8")
+
     for lang in COPY:
-        for page in ("", "install", "guide"):
+        for page in PAGES:
             path = ROOT / lang_path(lang, page) / "index.html"
             root = "../" * (len(path.relative_to(ROOT).parts) - 1) or "./"
             before = path.read_text(encoding="utf-8")
@@ -422,15 +497,22 @@ def sync(verify=False):
             source = replace(r"^<body[^>]*>", source, f'<body class="page">\n{GTM_BODY}')
             source = re.sub(r'^  <script defer src="[^"]+/site\.js"></script>\n', "", source, flags=re.MULTILINE)
             source = source.replace("</head>", f'  <script defer src="{root}assets/site.js"></script>\n</head>')
-            alt = COPY[lang]["photo"] + " — Slit Flare"
+            source = replace(r'^  <link rel="canonical" [^>]+>\n(?:  <link rel="alternate" [^>]+>\n)*', source, localization_links(lang, page))
+            source = replace(r'^  <meta property="og:locale" [^>]+>\n(?:  <meta property="og:locale:alternate" [^>]+>\n)*', source, open_graph_locales(lang))
+            alt = COPY[lang]["photo"] + " — " + COPY[lang].get("styles", (STYLES[0][0],))[0]
             source = replace(r'^  <meta property="og:image:alt"[^>]+>', source, f'  <meta property="og:image:alt" content="{escape(alt, quote=True)}">')
             if not page:
                 source = replace(r"^  <main id=\"main\".*?^  </main>", source, home_main(lang, root))
-            if source != before:
-                if verify:
-                    stale.append(str(path.relative_to(ROOT)))
-                else:
-                    path.write_text(source, encoding="utf-8")
+            write(path, before, source)
+    sitemap_path = ROOT / "sitemap.xml"
+    urls = "\n".join(
+        f"  <url><loc>{SITE}{lang_path(lang, page)}</loc></url>"
+        for lang in COPY for page in PAGES
+    )
+    sitemap = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+               '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+               f"{urls}\n</urlset>\n")
+    write(sitemap_path, sitemap_path.read_text(encoding="utf-8"), sitemap)
     if stale:
         raise SystemExit("Regenerate these pages: " + ", ".join(stale))
 

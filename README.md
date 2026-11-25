@@ -24,7 +24,7 @@ host root. If the canonical origin changes, update the metadata, sitemap and
 404 links together.
 
 For local preview, run `python3 -m http.server 8000` in the branch root.
-The three page pairs work at `http://localhost:8000/`. To also exercise the
+All language routes work at `http://localhost:8000/`. To also exercise the
 production path (including links from `404.html`), serve a parent directory
 where this checkout is named or symlinked as `grkit-light-leak`.
 
@@ -33,21 +33,28 @@ where this checkout is named or symlinked as `grkit-light-leak`.
 - Make edits to the shared header, footer and home pages in `tools/sync-site.py`,
   then run `python3 tools/sync-site.py` and commit the updated HTML. The
   installation and guide contents can be edited directly in their HTML files.
-  `python3 tools/sync-site.py --check` checks whether the generated pages match.
+  `python3 tools/sync-site.py --check` checks the generated pages and sitemap.
 - Check the module's README and release notes for the tested body, firmware,
-  runtime ABI and behavior before editing the EN and PT-BR pages.
-- Update the beta label and release state in `install/index.html` and
-  `pt-br/install/index.html`. Only offer a direct download after the exact
-  tagged GitHub release has a public `LITLEAK.GRM` asset. Do not upload the
-  module binary to this branch or use a generic `/releases/latest` link for
-  a prerelease.
-- Keep the locale switch and canonical/alternate links reciprocal. Add new
-  indexable URLs to the sitemap. Keep FAQ answers in the HTML and link to
-  sources for compatibility and recovery.
+  runtime ABI and behavior before editing any translation.
+- Update the beta label and release state on all three installation pages.
+  Only offer a direct download after the exact tagged GitHub release has a
+  public `LITLEAK.GRM` asset. Do not upload the module binary to this branch
+  or use a generic `/releases/latest` link for a prerelease.
+- Keep FAQ answers in the HTML and link to sources for compatibility and recovery.
+
+## Languages
+
+English is the default, with Brazilian Portuguese under `/pt-br/` and
+Simplified Chinese under `/zh-hans/`. Simplified Chinese follows the
+[GRKit website's fallback for an unspecified `zh` locale](https://github.com/ahonn/GRKit/blob/61dd9a697668d809939c2a75d402d76e418ff6fc/web/src/languagePage.ts).
+Use the menu labels from `text/zh-Hans.toml` on the module branch.
+After editing Chinese copy, run `python3 tools/sync-site.py` followed by
+`python3 tools/sync-zh-font.py` to refresh the self-hosted
+[Noto Sans SC subset](assets/Noto-Sans-SC-OFL.txt).
 
 ## Analytics
 
-The six content pages load Google Tag Manager container `GTM-52MK6S86`.
+The content pages load Google Tag Manager container `GTM-52MK6S86`.
 Analytics tags and their trigger and consent settings are managed in Google
 Tag Manager. This repository does not configure a separate Google Analytics
 measurement ID.

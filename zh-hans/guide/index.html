@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-52MK6S86');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Light Leak（漏光）使用指南 — 样式、设置和常见问题</title>
+  <meta name="description" content="了解如何在理光 GR III 的 GRKit 菜单里使用漏光模块，选择样式、强度、位置和变化，并查看有关 RAW、取景预览和配方的常见问题。">
+  <link rel="canonical" href="https://brunolimawd.github.io/grkit-light-leak/zh-hans/guide/">
+  <link rel="alternate" hreflang="en" href="https://brunolimawd.github.io/grkit-light-leak/guide/">
+  <link rel="alternate" hreflang="pt-BR" href="https://brunolimawd.github.io/grkit-light-leak/pt-br/guide/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://brunolimawd.github.io/grkit-light-leak/zh-hans/guide/">
+  <link rel="alternate" hreflang="x-default" href="https://brunolimawd.github.io/grkit-light-leak/guide/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Light Leak for GRKit">
+  <meta property="og:title" content="Light Leak（漏光）使用指南 — 样式、设置和常见问题">
+  <meta property="og:description" content="选择一种漏光样式，设置强度和入光方向，并了解模块如何处理 JPEG 和预览。">
+  <meta property="og:url" content="https://brunolimawd.github.io/grkit-light-leak/zh-hans/guide/">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="pt_BR">
+  <meta property="og:image" content="https://brunolimawd.github.io/grkit-light-leak/assets/share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="带条纹遮阳篷的餐车和站在车外的顾客 — 缝隙光束">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="../../assets/mark.svg">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script defer src="../../assets/site.js"></script>
+</head>
+<body class="page">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-52MK6S86"
+  height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="masthead">
+    <div class="masthead-top">
+      <div class="masthead-title">
+        <a class="masthead-name" href="../../zh-hans/">Light <span class="kit">Leak</span></a>
+        <a class="masthead-version" href="https://github.com/brunolimawd/grkit-light-leak/releases">beta</a>
+      </div>
+      <div class="languages">
+        <nav class="masthead-nav" aria-label="主导航">
+          <a href="../../zh-hans/#looks">漏光样式</a>
+          <a href="../../zh-hans/install/">开始安装</a>
+          <a href="../../zh-hans/#faq">常见问题</a>
+          <a href="../../zh-hans/guide/" aria-current="page">使用指南</a>
+        </nav>
+        <a class="github" href="https://github.com/brunolimawd/grkit-light-leak" aria-label="GitHub">
+          <img src="../../assets/github.svg" width="22" height="22" alt="">
+        </a>
+        <nav class="language-fallback" aria-label="语言">
+          <a href="../../guide/" lang="en" hreflang="en">English</a>
+          <a href="../../pt-br/guide/" lang="pt-BR" hreflang="pt-BR">Português</a>
+        </nav>
+        <span class="language-select" hidden>
+          <select class="button" aria-label="语言" data-language>
+            <option value="../../guide/" lang="en">English</option>
+            <option value="../../pt-br/guide/" lang="pt-BR">Português</option>
+            <option value="../../zh-hans/guide/" lang="zh-Hans" selected>简体中文</option>
+          </select>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="docs-layout">
+      <nav class="docs-side" aria-label="本页目录">
+        <h2>本页目录</h2>
+        <ul>
+          <li><a href="#first-shot">拍摄第一张照片</a></li>
+          <li><a href="#styles">六种漏光样式</a></li>
+          <li><a href="#controls">各项设置</a></li>
+          <li><a href="#viewfinder">取景图标</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </nav>
+      <article class="doc" aria-label="模块使用说明">
+        <h1>Light Leak（漏光）使用指南</h1>
+        <p class="docs-lead">选择漏光样式，决定光线从画面的哪一侧进入，再设置每张照片的效果如何变化。</p>
+
+        <section id="first-shot" aria-labelledby="first-shot-title">
+          <h2 id="first-shot-title">拍摄第一张照片</h2>
+          <ol>
+            <li>打开 <strong>ADJ → GRK → 漏光</strong>，选择<a href="../#looks">六种样式</a>之一。默认设为「关闭」。</li>
+            <li>按 <strong>Fn</strong> 调整强度、漏光位置和变化。要重现网站的示例，请选择「中」、「原始位置」和变化 1。</li>
+            <li>拍摄后回放 JPEG 查看结果。取景图标只提示当前样式，不显示实际漏光效果。</li>
+          </ol>
+        </section>
+
+        <section id="styles" aria-labelledby="styles-title">
+          <h2 id="styles-title">六种漏光样式</h2>
+          <p>以下描述以变化 1 为例。每种样式都可调节强度、入光侧和变化。</p>
+          <dl class="settings">
+            <div><dt>缝隙光束</dt><dd>白色光束、红色光幕和青色反光。默认从右侧进入。</dd></div>
+            <div><dt>烧灼边缘</dt><dd>不规则的明亮细缝，带红橙色溢光。默认从右侧进入。</dd></div>
+            <div><dt>胶片光带</dt><dd>金色光带，带红色边缘和冷色晕边。默认从底部进入。</dd></div>
+            <div><dt>琥珀光幕</dt><dd>一片琥珀色光斑，带斜向的红色尾迹。默认从顶部进入。</dd></div>
+            <div><dt>棱镜光弧</dt><dd>由红、金、蓝绿和蓝色组成的光弧。默认从右侧进入。</dd></div>
+            <div><dt>彩色光雾</dt><dd>由金色、蓝绿、蓝色和玫红交织而成的斜向光雾。默认从顶部进入。</dd></div>
+          </dl>
+        </section>
+
+        <section id="controls" aria-labelledby="controls-title">
+          <h2 id="controls-title">各项设置的作用</h2>
+          <dl class="settings">
+            <div><dt>强度</dt><dd>弱、中、强三档，默认为「中」。</dd></div>
+            <div><dt>漏光位置</dt><dd>右侧、左侧、顶部、底部、随机或原始位置。「原始位置」使用当前样式的默认入光侧。方向以传感器为准，竖拍时会随画面旋转。</dd></div>
+            <div><dt>变化</dt><dd>1 保留原始形状和配色，2 和 3 会改变两者。默认的「自动」会为每张照片选择一种变化，不改变所选的样式、强度或位置。</dd></div>
+            <div><dt>随机样式</dt><dd>为每张照片随机选择样式、强度和位置，不改动已保存的设置。选择固定变化时就使用该变化；设为「自动」时才随机选择变化。连续拍摄可能得到相同结果。</dd></div>
+          </dl>
+          <p>主 JPEG 和它的预览使用同一次随机选择。拍摄单色照片时，漏光只增加亮度，不添加色彩。</p>
+        </section>
+
+        <section id="viewfinder" aria-labelledby="viewfinder-title">
+          <h2 id="viewfinder-title">取景图标</h2>
+          <p>「图标显示」开启时，在静态照片取景的 DISP 完整信息模式下，屏幕左侧会显示漏光图标。一格、两格或三格白色标记分别表示弱、中、强。「随机」样式显示没有强度标记的骰子图标。图标不会写入照片。</p>
+          <p>显示图标时，相机的原生网格线可能会被隐藏。可以通过 <strong>Fn → 图标显示 → 关闭</strong> 恢复原来的网格线显示方式，或改用 GRKit 的辅助线模块。</p>
+        </section>
+
+        <section id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">常见问题</h2>
+          <div class="faq">
+            <div id="raw"><h3><a href="#raw">漏光会改动 RAW 文件吗？ <span class="arrow" aria-hidden="true">#</span></a></h3><p>不会。效果应用于 JPEG 及其预览，不修改传感器的原始数据。</p></div>
+            <div id="live-view"><h3><a href="#live-view">拍摄前能预览效果吗？ <span class="arrow" aria-hidden="true">#</span></a></h3><p>不能。漏光没有实时预览。取景图标只提示当前样式，以及能在拍摄前确定的强度。</p></div>
+            <div id="gr-iiix-gr-iv"><h3><a href="#gr-iiix-gr-iv">支持 GR IIIx 或 GR IV 吗？ <span class="arrow" aria-hidden="true">#</span></a></h3><p>这些机型还没有用此模块进行真机验证。目前已测试的是理光 GR III（固件 2.10）。参阅<a href="../install/#compatibility">兼容性说明</a>。</p></div>
+            <div id="recipes"><h3><a href="#recipes">漏光效果会保存到配方吗？ <span class="arrow" aria-hidden="true">#</span></a></h3><p>不会。GRKit 的配方不会保存漏光模块的设置。</p></div>
+            <div id="timing"><h3><a href="#timing">漏光与其他效果的应用顺序是什么？ <span class="arrow" aria-hidden="true">#</span></a></h3><p>漏光在胶片风格和光晕之后应用，早于胶片颗粒和加印日期。它不会给额外添加的边框染色。</p></div>
+            <div id="file-path"><h3><a href="#file-path"><code>LITLEAK.GRM</code> 放在哪里？ <span class="arrow" aria-hidden="true">#</span></a></h3><p>从 SD 卡根目录起复制到 <code>GRKIT/MODULES/LITLEAK.GRM</code>。参阅<a href="../install/#install">安装步骤</a>。</p></div>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <div class="footer-group">
+        <p class="footer-heading">Light Leak</p>
+        <ul>
+          <li><a href="../../zh-hans/install/">开始安装</a></li>
+          <li><a href="../../zh-hans/#looks">漏光样式</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <p class="footer-heading">帮助</p>
+        <ul>
+          <li><a href="../../zh-hans/guide/">使用指南</a></li>
+          <li><a href="../../zh-hans/#faq">常见问题</a></li>
+          <li><a href="../../zh-hans/install/#compatibility">兼容性</a></li>
+          <li><a href="https://grkit.app/zh-hans/docs/recovery/">恢复指南</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <p class="footer-heading">项目</p>
+        <ul>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/releases">发布版本</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/issues">反馈问题</a></li>
+          <li><a href="https://grkit.app/zh-hans/">GRKit 项目</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <p class="footer-heading">法律信息</p>
+        <ul>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/tree/gh-pages#sample-photo-and-credits">照片和设计鸣谢</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/blob/gh-pages/LICENSE">MIT 许可证</a></li>
+          <li><a href="../../assets/IBM-Plex-OFL.txt">IBM Plex</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <p>Light Leak（漏光）是由 brunolimawd 维护的独立模块，不属于 GRKit 官方发行版，也与理光无隶属关系。</p>
+      <a href="https://github.com/brunolimawd/grkit-light-leak/releases">Light Leak · v0.1.0-beta.1</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -42,6 +42,12 @@
   font-weight: 500;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Noto Sans SC';
+  src: url('noto-sans-sc-site.woff2') format('woff2');
+  font-weight: 400 700;
+  font-display: swap;
+}
 
 :root {
   --ink: #0b0b0b;
@@ -58,6 +64,13 @@
   --mono: 'IBM Plex Mono', monospace;
   --stuck-heading-line: 36px;
   color-scheme: light;
+}
+
+:root[lang='zh-Hans'] {
+  --han: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --body: 'IBM Plex Sans', var(--han);
+  --display: 'IBM Plex Sans Condensed', var(--han);
+  --mono: 'IBM Plex Mono', var(--han);
 }
 
 * { box-sizing: border-box; }
@@ -136,7 +149,7 @@ code { background: var(--code); font: .88em var(--mono); overflow-wrap: anywhere
 .masthead-nav { display: flex; gap: 24px; margin-right: 8px; font-size: 14px; }
 .masthead-nav a { text-decoration: none; white-space: nowrap; }
 .masthead-nav a[aria-current='page'] { text-decoration: underline; text-underline-offset: 4px; }
-.languages { display: flex; justify-content: flex-end; align-items: center; gap: 12px; }
+.languages { display: flex; justify-content: flex-end; align-items: center; min-width: 0; gap: 12px; }
 .github { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex: none; }
 .language-select { display: block; position: relative; }
 .language-select .button { appearance: none; min-width: 112px; padding-right: 36px; }
@@ -152,7 +165,8 @@ code { background: var(--code); font: .88em var(--mono); overflow-wrap: anywhere
   transform: translateY(-75%) rotate(45deg);
   pointer-events: none;
 }
-.language-fallback { display: inline-flex; align-items: center; font-size: 14px; min-height: 44px; }
+.language-fallback { display: flex; flex-wrap: wrap; justify-content: flex-end; min-width: 0; gap: 0 10px; }
+.language-fallback a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
 @media (max-width: 900px) { .masthead-nav { display: none; } }
 @media (max-width: 560px) { .masthead-name { font-size: 30px; } }
 @media (max-width: 400px) {
@@ -160,6 +174,7 @@ code { background: var(--code); font: .88em var(--mono); overflow-wrap: anywhere
   .masthead-top, .languages { gap: 4px; }
   .language-select .button { min-width: 0; padding-right: 26px; padding-left: 8px; }
   .language-select::after { right: 10px; }
+  .language-fallback a { min-height: 32px; font-size: 12px; }
 }
 @media (max-width: 355px) {
   .masthead-name { font-size: 26px; }
