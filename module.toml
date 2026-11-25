@@ -1,0 +1,66 @@
+id = "LITLEAK"
+version = 16
+# After Glow and before Film-like Grain in the frame stage.
+order = 47
+sources = ["light_leak.c", "slit.c", "reference.c", "indicator.c"]
+tiles = [
+    "tiles/0-module.png",
+    "tiles/1-random.png",
+    "tiles/2-slit.png",
+    "tiles/3-burnt.png",
+    "tiles/4-band.png",
+    "tiles/5-veil.png",
+    "tiles/6-prism.png",
+    "tiles/7-fog.png",
+    "tiles/8-off.png",
+]
+
+# New key: the compressed list must not interpret a saved STYLE as a new look.
+[[settings]]
+key = "LOOK"
+values = 8
+saved = true
+
+[[settings]]
+key = "STRENGTH"
+values = 3
+default = 1
+saved = true
+
+# 0 On, 1 Off. An active overlay can hide the camera's native grid.
+[[settings]]
+key = "ICON"
+values = 2
+default = 0
+saved = true
+
+# Keep all v9 position IDs; Original uses the reference side for each new look.
+[[settings]]
+key = "POSITION"
+values = 6
+default = 5
+saved = true
+
+[[settings]]
+key = "VARIATION"
+values = 4
+default = 3
+saved = true
+
+[page]
+setting = "LOOK"
+off_icon = { tile = 8 }
+settings = ["LOOK", "STRENGTH", "POSITION", "VARIATION", "ICON"]
+
+[[layers]]
+paint = "light_leak_badge"
+setting = "LOOK"
+order = 40
+full_disp = true
+live_only = true
+enabled = { setting = "ICON", equals = 0 }
+
+[[filters]]
+apply = "light_leak_apply"
+setting = "LOOK"
+stage = "frame"

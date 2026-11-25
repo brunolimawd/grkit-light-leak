@@ -1,0 +1,21 @@
+title = "Light Leak"
+rows = ["Off", "Random", "Slit Flare", "Burnt Edge", "Film Band", "Amber Veil", "Prismatic Arc", "Color Fog"]
+
+[settings.LOOK]
+label = "Leak Style"
+
+[settings.STRENGTH]
+label = "Strength"
+values = ["Weak", "Medium", "Strong"]
+
+[settings.ICON]
+label = "Show Icon"
+values = ["On", "Off"]
+
+[settings.POSITION]
+label = "Leak Position"
+values = ["Right", "Left", "Top", "Bottom", "Random", "Original"]
+
+[settings.VARIATION]
+label = "Variation"
+values = ["1", "2", "3", "Auto"]

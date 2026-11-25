@@ -1,0 +1,10 @@
+/.upstream/
+/build/
+/dist/
+/target/
+*.GRM
+*.grm
+*.bin
+*.raw
+*.zip
+.DS_Store

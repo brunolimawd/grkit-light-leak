@@ -1,0 +1,21 @@
+title = "漏光"
+rows = ["關閉", "隨機", "縫隙光束", "燒灼邊緣", "膠片光帶", "琥珀光幕", "稜鏡光弧", "彩色光霧"]
+
+[settings.LOOK]
+label = "漏光樣式"
+
+[settings.STRENGTH]
+label = "強度"
+values = ["弱", "中", "強"]
+
+[settings.ICON]
+label = "圖示顯示"
+values = ["開啟", "關閉"]
+
+[settings.POSITION]
+label = "漏光位置"
+values = ["右側", "左側", "頂部", "底部", "隨機", "原始位置"]
+
+[settings.VARIATION]
+label = "變化"
+values = ["1", "2", "3", "自動"]

@@ -1,0 +1,21 @@
+title = "ライトリーク"
+rows = ["オフ", "ランダム", "スリットフレア", "焼けた縁", "フィルム帯", "アンバーベール", "虹色アーク", "色霧"]
+
+[settings.LOOK]
+label = "リークスタイル"
+
+[settings.STRENGTH]
+label = "強度"
+values = ["弱", "中", "強"]
+
+[settings.ICON]
+label = "アイコン表示"
+values = ["オン", "オフ"]
+
+[settings.POSITION]
+label = "漏光位置"
+values = ["右", "左", "上", "下", "ランダム", "標準"]
+
+[settings.VARIATION]
+label = "バリエーション"
+values = ["1", "2", "3", "自動"]

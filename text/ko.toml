@@ -1,0 +1,21 @@
+title = "빛샘"
+rows = ["끄기", "무작위", "틈새 빛줄기", "가장자리 번짐", "필름 띠", "호박빛 베일", "무지갯빛 호", "색 안개"]
+
+[settings.LOOK]
+label = "빛샘 스타일"
+
+[settings.STRENGTH]
+label = "강도"
+values = ["약", "중", "강"]
+
+[settings.ICON]
+label = "아이콘 표시"
+values = ["켜짐", "꺼짐"]
+
+[settings.POSITION]
+label = "빛샘 위치"
+values = ["오른쪽", "왼쪽", "위", "아래", "무작위", "기본 위치"]
+
+[settings.VARIATION]
+label = "변형"
+values = ["1", "2", "3", "자동"]

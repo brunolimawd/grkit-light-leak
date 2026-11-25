@@ -1,0 +1,62 @@
+name: Tests
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  module:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Read the GRKit revision
+        id: grkit
+        run: echo "revision=$(cat GRKIT_REV)" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ahonn/grkit
+          ref: ${{ steps.grkit.outputs.revision }}
+          path: .upstream/grkit
+          persist-credentials: false
+      - run: rustup toolchain install 1.92.0 --profile minimal --component rustfmt
+      - run: rustup default 1.92.0
+      - name: Install LLVM 21
+        env:
+          LLVM_KEY_FINGERPRINT: 6084F3CF814B57C1CF12EFD5154D18AF4F7421
+        run: |
+          curl --fail --location --silent --show-error -o "$RUNNER_TEMP/llvm.asc" https://apt.llvm.org/llvm-snapshot.gpg.key
+          gpg --show-keys --with-colons "$RUNNER_TEMP/llvm.asc" | grep --quiet "^fpr:::::::::$LLVM_KEY_FINGERPRINT:"
+          sudo gpg --dearmor --output /usr/share/keyrings/apt-llvm-21.gpg "$RUNNER_TEMP/llvm.asc"
+          echo "deb [signed-by=/usr/share/keyrings/apt-llvm-21.gpg] https://apt.llvm.org/noble/ llvm-toolchain-noble-21 main" \
+            | sudo tee /etc/apt/sources.list.d/apt-llvm-21.list
+          sudo apt-get update
+          sudo apt-get install --yes clang-21 lld-21 libclang-rt-21-dev
+      - name: Build the pinned GRKit CLI
+        env:
+          CARGO_TARGET_DIR: ${{ runner.temp }}/grkit-target
+        run: cargo build --locked --manifest-path .upstream/grkit/Cargo.toml -p grkit-cli
+      - name: Check reproducible badge artwork
+        run: |
+          rustfmt --edition 2024 --check tools/generate-badge.rs
+          rustc --edition=2024 tools/generate-badge.rs -o "$RUNNER_TEMP/generate-badge"
+          "$RUNNER_TEMP/generate-badge" "$RUNNER_TEMP/badge_art.h"
+          cmp badge_art.h "$RUNNER_TEMP/badge_art.h"
+      - name: Run native tests with sanitizers
+        env:
+          GRKIT_SANITIZER_CC: clang-21
+          UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+        run: |
+          "$RUNNER_TEMP/grkit-target/debug/grkit" module test --dir . \
+            --cc "$GITHUB_WORKSPACE/.upstream/grkit/.github/scripts/clang-sanitized.sh"
+      - name: Build the ARM module and verify the installer contract
+        run: |
+          mkdir -p build
+          "$RUNNER_TEMP/grkit-target/debug/grkit" module build --dir . \
+            --out build/LITLEAK.GRM --clang clang-21 --lld ld.lld-21
+          clang-21 -I .upstream/grkit/runtime \
+            .upstream/grkit/tests/runtime/grm_registrations_contract.c \
+            -o "$RUNNER_TEMP/check-registrations"
+          test "$("$RUNNER_TEMP/check-registrations" build/LITLEAK.GRM)" = "status 0"
