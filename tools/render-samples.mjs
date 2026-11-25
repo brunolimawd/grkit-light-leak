@@ -2,17 +2,20 @@ import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { resolve } from 'node:path';
 
-const [, , sharpPath, rendererPath] = process.argv;
-if (!sharpPath || !rendererPath) {
-  throw new Error('Usage: node tools/render-samples.mjs /path/to/node_modules/sharp /path/to/render-sample');
+const [, , sharpPath, rendererPath, photo] = process.argv;
+if (!sharpPath || !rendererPath || !photo) {
+  throw new Error('Usage: node tools/render-samples.mjs /path/to/node_modules/sharp /path/to/render-sample /path/to/standard.jpg');
 }
 const sharp = createRequire(import.meta.url)(resolve(sharpPath));
 const renderer = resolve(rendererPath);
 const width = 1200;
 const height = 800;
 const pixels = width * height;
-const base = await sharp('assets/coastal-line.svg').flatten().toColourspace('srgb').raw().toBuffer();
-if (base.length !== pixels * 3) throw new Error('Unexpected illustration size');
+const { data: base, info } = await sharp(photo).autoOrient().flatten().toColourspace('srgb')
+  .raw().toBuffer({ resolveWithObject: true });
+if (info.width !== width || info.height !== height || info.channels !== 3) {
+  throw new Error('Expected GRKit’s 1200 × 800 standard.jpg');
+}
 const clamp = (value) => Math.min(255, Math.max(0, Math.round(value)));
 const yuv = Buffer.alloc(pixels * 1.5);
 
@@ -53,21 +56,30 @@ const rgb = (planes) => {
 };
 
 const exportImage = async (image, name, size) => {
-  await image.clone().resize(size).webp({ quality: 87 }).toFile(`assets/${name}.webp`);
+  await image.clone().resize(size).webp({ quality: 84 }).toFile(`assets/${name}.webp`);
 };
 
-const styles = ['slit-flare', 'burnt-edge', 'film-band', 'amber-veil', 'prismatic-arc', 'color-fog'];
-await exportImage(rgb(yuv), 'coastal-original', 1200);
-await exportImage(rgb(yuv), 'coastal-original-small', 600);
-for (const [index, style] of styles.entries()) {
-  const result = spawnSync(renderer, [String(index + 2)], { input: yuv, maxBuffer: yuv.length * 2 });
+// GRKit's base development, with no Light Leak applied.
+await exportImage(rgb(yuv), 'sample-original', 1200);
+await exportImage(rgb(yuv), 'sample-original-small', 600);
+const previews = [
+  ['slit-flare', 2], ['burnt-edge', 3], ['film-band', 4], ['amber-veil', 5], ['prismatic-arc', 6], ['color-fog', 7],
+  ['slit-weak', 2, 0], ['slit-strong', 2, 2],
+  ['slit-left', 2, 1, 1], ['slit-top', 2, 1, 2], ['slit-bottom', 2, 1, 3],
+  ['slit-variation-2', 2, 1, 5, 1], ['slit-variation-3', 2, 1, 5, 2]
+];
+
+for (const [i, [name, style, strength = 1, position = 5, variation = 0]] of previews.entries()) {
+  const result = spawnSync(renderer, [style, strength, position, variation].map(String), {
+    input: yuv, maxBuffer: yuv.length * 2
+  });
   if (result.error || result.status !== 0 || result.stdout?.length !== yuv.length || result.stdout.equals(yuv)) {
-    throw new Error(`Could not render ${style}`, { cause: result.error });
+    throw new Error(`Could not render ${name}`, { cause: result.error });
   }
   const image = rgb(result.stdout);
-  await exportImage(image, style, 600);
-  if (index === 0) {
-    await exportImage(image, 'slit-flare-large', 1200);
+  await exportImage(image, name, 600);
+  if (i < 6) await exportImage(image, `${name}-large`, 1200);
+  if (i === 0) {
     await image.clone().resize(1200, 630).jpeg({ quality: 88, mozjpeg: true }).toFile('assets/share.jpg');
   }
 }

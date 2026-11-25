@@ -19,116 +19,236 @@
   <meta property="og:image" content="https://brunolimawd.github.io/grkit-light-leak/assets/share.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="An illustrated train crosses a bay at dusk with a red light leak entering from the right.">
+  <meta property="og:image:alt" content="A food truck with a striped awning and customers outside — Slit Flare">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="assets/mark.svg">
   <link rel="stylesheet" href="assets/site.css">
   <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"WebSite","name":"Light Leak for GRKit","url":"https://brunolimawd.github.io/grkit-light-leak/","inLanguage":["en","pt-BR"]}
   </script>
+  <script defer src="./assets/site.js"></script>
 </head>
-<body>
+<body class="page">
   <a class="skip" href="#main">Skip to content</a>
   <header class="masthead">
-    <div class="wrap masthead-inner">
-      <a class="brand" href="./">
-        <img src="assets/mark.svg" alt="" width="40" height="40">
-        <span><span class="brand-name">Light Leak</span> <span class="brand-sub">FOR GRKIT</span></span>
-      </a>
-      <nav class="nav" aria-label="Main navigation">
-        <ul>
-          <li><a href="./" aria-current="page">Looks</a></li>
-          <li><a href="install/">Install</a></li>
-          <li><a href="guide/">Guide</a></li>
-          <li><a class="language" href="pt-br/" lang="pt-BR" hreflang="pt-BR">PT-BR<span class="sr-only"> · Português (Brasil)</span></a></li>
-        </ul>
-      </nav>
+    <div class="masthead-top">
+      <div class="masthead-title">
+        <a class="masthead-name" href="./">Light <span class="kit">Leak</span></a>
+        <a class="masthead-version" href="https://github.com/brunolimawd/grkit-light-leak/releases">beta</a>
+      </div>
+      <div class="languages">
+        <nav class="masthead-nav" aria-label="Main navigation">
+          <a href="./#looks">Looks</a>
+          <a href="./install/">Install</a>
+          <a href="./#faq">FAQ</a>
+          <a href="./guide/">Guide</a>
+        </nav>
+        <a class="github" href="https://github.com/brunolimawd/grkit-light-leak" aria-label="GitHub">
+          <img src="./assets/github.svg" width="22" height="22" alt="">
+        </a>
+        <a class="language-fallback" href="./pt-br/" lang="pt-BR" hreflang="pt-BR">Português</a>
+        <span class="language-select" hidden>
+          <select class="button" aria-label="Language" data-language>
+            <option value="./" lang="en" selected>English</option>
+            <option value="./pt-br/" lang="pt-BR">Português</option>
+          </select>
+        </span>
+      </div>
     </div>
   </header>
 
-  <main id="main" class="wrap" tabindex="-1">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <div>
-          <p class="eyebrow">Unofficial GRKit module · Beta</p>
-          <h1 id="hero-title">Light Leak <span>for GRKit</span></h1>
-        </div>
-        <div class="hero-summary">
-          <p>Let a little light in. Give your JPEGs the streaks, washes and warm edges of a film camera’s light leak, right in your RICOH GR III.</p>
-          <a class="button" href="install/">Installation guide <span class="arrow" aria-hidden="true">↗</span></a>
+  <main id="main" tabindex="-1">
+    <section class="landing-hero" id="looks" aria-labelledby="hero-title">
+      <div class="landing-copy">
+        <h1 class="lead" id="hero-title"><span class="lead-line">Film light leaks for your RICOH GR.</span> <span class="lead-line">No firmware flashing.</span></h1>
+        <div class="landing-action">
+          <a class="download landing-install" href="install/">Install</a>
+          <p class="note">An unofficial module written to your SD card. Tested on the RICOH GR III with firmware 2.10. Applies to JPEGs and previews without changing RAW files.</p>
         </div>
       </div>
-      <figure class="comparison">
-        <div class="comparison-frames">
-          <div class="frame">
-            <img src="assets/coastal-original.webp" srcset="assets/coastal-original-small.webp 600w, assets/coastal-original.webp 1200w" sizes="(max-width: 36rem) 94vw, (max-width: 75rem) 46vw, 540px" width="1200" height="800" alt="An illustrated train crosses a bay at dusk, with a low sun and green hills." fetchpriority="high">
-            <span class="frame-label">Before</span>
+      <div class="landing-looks" data-preview data-alt="A food truck with a striped awning and customers outside">
+        <div class="frame">
+          <div class="image-comparison">
+            <img src="./assets/sample-original.webp" srcset="./assets/sample-original-small.webp 600w, ./assets/sample-original.webp 1200w" sizes="(max-width: 860px) 92vw, (max-width: 1280px) 48vw, 607px" width="1200" height="800" fetchpriority="high" alt="A food truck with a striped awning and customers outside — Without Light Leak">
+            <div class="comparison-effect">
+              <img src="./assets/slit-flare-large.webp" srcset="./assets/slit-flare.webp 600w, ./assets/slit-flare-large.webp 1200w" sizes="(max-width: 860px) 92vw, (max-width: 1280px) 48vw, 607px" width="1200" height="800" data-preview-image alt="A food truck with a striped awning and customers outside — Slit Flare">
+            </div>
+            <input class="comparison-control" type="range" min="0" max="100" value="50" aria-label="Before and after: slide to reveal the Light Leak effect" hidden>
+            <span class="comparison-handle" aria-hidden="true">
+              <span class="comparison-knob" hidden><svg width="19" height="12" viewBox="0 0 19 12" fill="currentColor"><path d="M7 2.5 3 6l4 3.5zm5 0L16 6l-4 3.5z"/></svg></span>
+            </span>
           </div>
-          <div class="frame">
-            <img src="assets/slit-flare-large.webp" srcset="assets/slit-flare.webp 600w, assets/slit-flare-large.webp 1200w" sizes="(max-width: 36rem) 94vw, (max-width: 75rem) 46vw, 540px" width="1200" height="800" alt="A white beam and red curtain wash in from the right, with a cool reflection farther into the same scene.">
-            <span class="frame-label frame-label--active">With Light Leak</span>
-          </div>
+          <span class="tag" data-preview-label lang="en">Slit Flare</span>
         </div>
-        <figcaption><span><strong>Slit Flare</strong> · Medium · Right · Variation 1</span><span>Illustration rendered with the module off-camera</span></figcaption>
-      </figure>
-      <dl class="proof">
-        <div><dt class="label">Tested on</dt><dd>GR III · firmware 2.10</dd></div>
-        <div><dt class="label">Output</dt><dd>JPEG + previews</dd></div>
-        <div><dt class="label">Installation</dt><dd>SD card · no firmware flashing</dd></div>
-      </dl>
+        <div class="landing-looks-meta">
+          <p class="landing-look-name" data-preview-label aria-live="polite" lang="en">Slit Flare</p>
+          <p class="note"><a href="https://www.flickr.com/photos/mujitra/53311001084/">MIKI Yoshihito</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · RICOH GR IIIx · Off-camera demo</p>
+        </div>
+        <div class="landing-strip" role="group" aria-label="Looks" data-preview-options hidden>
+          <button type="button" class="landing-film" aria-pressed="true" data-name="Slit Flare" data-image="./assets/slit-flare-large.webp" data-srcset="./assets/slit-flare.webp 600w, ./assets/slit-flare-large.webp 1200w"><span class="landing-icon"><img src="./assets/2-slit.png" width="40" height="40" alt=""></span><span lang="en">Slit Flare</span></button>
+          <button type="button" class="landing-film" aria-pressed="false" data-name="Burnt Edge" data-image="./assets/burnt-edge-large.webp" data-srcset="./assets/burnt-edge.webp 600w, ./assets/burnt-edge-large.webp 1200w"><span class="landing-icon"><img src="./assets/3-burnt.png" width="40" height="40" alt=""></span><span lang="en">Burnt Edge</span></button>
+          <button type="button" class="landing-film" aria-pressed="false" data-name="Film Band" data-image="./assets/film-band-large.webp" data-srcset="./assets/film-band.webp 600w, ./assets/film-band-large.webp 1200w"><span class="landing-icon"><img src="./assets/4-band.png" width="40" height="40" alt=""></span><span lang="en">Film Band</span></button>
+          <button type="button" class="landing-film" aria-pressed="false" data-name="Amber Veil" data-image="./assets/amber-veil-large.webp" data-srcset="./assets/amber-veil.webp 600w, ./assets/amber-veil-large.webp 1200w"><span class="landing-icon"><img src="./assets/5-veil.png" width="40" height="40" alt=""></span><span lang="en">Amber Veil</span></button>
+          <button type="button" class="landing-film" aria-pressed="false" data-name="Prismatic Arc" data-image="./assets/prismatic-arc-large.webp" data-srcset="./assets/prismatic-arc.webp 600w, ./assets/prismatic-arc-large.webp 1200w"><span class="landing-icon"><img src="./assets/6-prism.png" width="40" height="40" alt=""></span><span lang="en">Prismatic Arc</span></button>
+          <button type="button" class="landing-film" aria-pressed="false" data-name="Color Fog" data-image="./assets/color-fog-large.webp" data-srcset="./assets/color-fog.webp 600w, ./assets/color-fog-large.webp 1200w"><span class="landing-icon"><img src="./assets/7-fog.png" width="40" height="40" alt=""></span><span lang="en">Color Fog</span></button>
+        </div>
+        <noscript><p class="note"><a href="guide/#styles">Read about all six styles in the guide</a></p></noscript>
+      </div>
     </section>
 
-    <section class="section" id="looks" aria-labelledby="looks-title">
-      <div class="section-heading">
-        <div><p class="eyebrow">The looks</p><h2 id="looks-title">Six ways for light to get in</h2></div>
-        <p>From a thin white streak to a wash of color. Start with a style, then choose where it enters and how strong it is.</p>
+    <section class="section" id="strength" aria-labelledby="strength-title">
+      <h2 id="strength-title">Strength</h2>
+      <div class="section-body">
+        <p class="landing-text">Choose how much light enters the frame. Try Slit Flare at three strengths on the same photo.</p>
+        <div class="landing-framing" data-preview data-alt="A food truck with a striped awning and customers outside — Slit Flare">
+          <div class="landing-choices" role="group" aria-label="Strength" data-preview-options hidden>
+            <button type="button" class="button small landing-ratio" aria-pressed="false" data-image="./assets/slit-weak.webp" data-name="Weak">Weak</button>
+            <button type="button" class="button small landing-ratio" aria-pressed="true" data-image="./assets/slit-flare.webp" data-name="Medium">Medium</button>
+            <button type="button" class="button small landing-ratio" aria-pressed="false" data-image="./assets/slit-strong.webp" data-name="Strong">Strong</button>
+          </div>
+          <div class="landing-framing-views">
+            <figure>
+              <div class="frame"><img src="./assets/slit-flare.webp" width="600" height="400" data-preview-image loading="lazy" decoding="async" alt="A food truck with a striped awning and customers outside — Slit Flare, Medium"></div>
+              <figcaption><b>JPEG</b> · Slit Flare · <span data-preview-label aria-live="polite">Medium</span></figcaption>
+            </figure>
+            <figure>
+              <div class="frame"><img src="./assets/sample-original-small.webp" width="600" height="400" loading="lazy" decoding="async" alt="A food truck with a striped awning and customers outside — Without Light Leak"></div>
+              <figcaption><b>Without Light Leak</b></figcaption>
+            </figure>
+          </div>
+        </div>
+        <p class="note">The looks above use Medium strength, Original position and Variation 1.</p>
       </div>
-      <div class="look-grid">
-        <article class="look" id="slit-flare">
-          <img src="assets/slit-flare.webp" width="600" height="400" loading="lazy" decoding="async" alt="White flare and a warm red band entering from the right.">
-          <div class="look-copy"><span class="label">01 / Original: right</span><h3>Slit Flare</h3><p>A white beam, a red curtain and a separate cyan reflection.</p></div>
-        </article>
-        <article class="look" id="burnt-edge">
-          <img src="assets/burnt-edge.webp" width="600" height="400" loading="lazy" decoding="async" alt="Broken pale seam with a red-orange glow along the right edge.">
-          <div class="look-copy"><span class="label">02 / Original: right</span><h3>Burnt Edge</h3><p>An irregular bright seam with red-orange spill.</p></div>
-        </article>
-        <article class="look" id="film-band">
-          <img src="assets/film-band.webp" width="600" height="400" loading="lazy" decoding="async" alt="A gold strip lifts off the lower edge, bordered by red and a cool fringe.">
-          <div class="look-copy"><span class="label">03 / Original: bottom</span><h3>Film Band</h3><p>A gold band with a red lip and cool fringe.</p></div>
-        </article>
-        <article class="look" id="amber-veil">
-          <img src="assets/amber-veil.webp" width="600" height="400" loading="lazy" decoding="async" alt="A patch of amber light at the top trails diagonally into red.">
-          <div class="look-copy"><span class="label">04 / Original: top</span><h3>Amber Veil</h3><p>A pool of amber light with a diagonal red tail.</p></div>
-        </article>
-        <article class="look" id="prismatic-arc">
-          <img src="assets/prismatic-arc.webp" width="600" height="400" loading="lazy" decoding="async" alt="A curve of warm and cool light arcs in from the right.">
-          <div class="look-copy"><span class="label">05 / Original: right</span><h3>Prismatic Arc</h3><p>Red and gold bend into teal and blue.</p></div>
-        </article>
-        <article class="look" id="color-fog">
-          <img src="assets/color-fog.webp" width="600" height="400" loading="lazy" decoding="async" alt="A wide wash of gold, teal, blue and rose softens the sky.">
-          <div class="look-copy"><span class="label">06 / Original: top</span><h3>Color Fog</h3><p>A soft diagonal wash of gold, teal, blue and rose.</p></div>
-        </article>
-      </div>
-      <p class="note">All six examples use the same illustration, Medium strength, the Original entry side and Variation 1. They are not camera captures.</p>
     </section>
 
-    <section class="next" aria-labelledby="next-title">
-      <div><p class="eyebrow">On the camera</p><h2 id="next-title">Find it in ADJ → GRK</h2><p>Open Light Leak to pick a look. Use Fn to change the settings.</p></div>
-      <a class="text-link" href="guide/">Read the field guide <span class="arrow" aria-hidden="true">↗</span></a>
+    <section class="section" aria-labelledby="details-title">
+      <h2 id="details-title">More controls</h2>
+      <div class="section-body">
+        <div class="landing-details">
+          <figure class="landing-detail" data-preview data-alt="A food truck with a striped awning and customers outside — Slit Flare">
+            <div class="frame"><img src="./assets/slit-flare.webp" width="600" height="400" data-preview-image loading="lazy" decoding="async" alt="A food truck with a striped awning and customers outside — Slit Flare, Right"><span class="tag" data-preview-label>Right</span></div>
+            <figcaption>
+              <h3>Leak Position</h3>
+              <p>Choose the edge the light enters from. Original uses each look’s default side.</p>
+              <div class="landing-choices" role="group" aria-label="Leak Position" data-preview-options hidden>
+                <button type="button" class="button small" aria-pressed="true" data-image="./assets/slit-flare.webp" data-name="Right">Right</button>
+            <button type="button" class="button small" aria-pressed="false" data-image="./assets/slit-left.webp" data-name="Left">Left</button>
+            <button type="button" class="button small" aria-pressed="false" data-image="./assets/slit-top.webp" data-name="Top">Top</button>
+            <button type="button" class="button small" aria-pressed="false" data-image="./assets/slit-bottom.webp" data-name="Bottom">Bottom</button>
+              </div>
+              <p class="note"><a href="https://www.flickr.com/photos/mujitra/53311001084/">MIKI Yoshihito</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></p>
+            </figcaption>
+          </figure>
+          <figure class="landing-detail" data-preview data-alt="A food truck with a striped awning and customers outside — Slit Flare">
+            <div class="frame"><img src="./assets/slit-flare.webp" width="600" height="400" data-preview-image loading="lazy" decoding="async" alt="A food truck with a striped awning and customers outside — Slit Flare, Variation 1"><span class="tag" data-preview-label>Variation 1</span></div>
+            <figcaption>
+              <h3>Variation</h3>
+              <p>Change the shape and colors without switching styles. Variation 1 is the original look.</p>
+              <div class="landing-choices" role="group" aria-label="Variation" data-preview-options hidden>
+                <button type="button" class="button small" aria-pressed="true" data-image="./assets/slit-flare.webp" data-name="Variation 1">Variation 1</button>
+            <button type="button" class="button small" aria-pressed="false" data-image="./assets/slit-variation-2.webp" data-name="Variation 2">Variation 2</button>
+            <button type="button" class="button small" aria-pressed="false" data-image="./assets/slit-variation-3.webp" data-name="Variation 3">Variation 3</button>
+              </div>
+              <p class="note"><a href="https://www.flickr.com/photos/mujitra/53311001084/">MIKI Yoshihito</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="camera-title">
+      <h2 id="camera-title">On the camera</h2>
+      <div class="section-body">
+        <div class="landing-screens">
+          <figure>
+            <div class="camera-diagram" aria-hidden="true">
+              <p>Menu diagram · ADJ → GRK</p>
+              <div class="camera-diagram-tiles">
+                <img src="./assets/0-module.png" width="40" height="40" alt="" loading="lazy">
+                <img src="./assets/2-slit.png" width="40" height="40" alt="" loading="lazy">
+                <img src="./assets/3-burnt.png" width="40" height="40" alt="" loading="lazy">
+                <img src="./assets/4-band.png" width="40" height="40" alt="" loading="lazy">
+              </div>
+              <p>Light Leak</p>
+            </div>
+            <figcaption>Press ADJ, choose GRK and open Light Leak.</figcaption>
+          </figure>
+          <figure>
+            <div class="camera-diagram" aria-hidden="true">
+              <p>Menu diagram · Fn</p>
+              <p>Strength · Leak Position · Variation</p>
+              <p>Show Icon</p>
+            </div>
+            <figcaption>Press Fn in Light Leak to change the settings. <a href="guide/">Guide</a></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Before you install</h2>
+      <div class="section-body faq">
+        <details><summary>Is Light Leak part of GRKit?</summary><p>No. It is a separate, unofficial module. A compatible GRKit runtime must already be installed.</p></details>
+        <details><summary>Which cameras have been tested?</summary><p>The module was tested on the RICOH GR III with firmware 2.10. The GR IIIx used for the sample photo and other models have not been tested with the module.</p></details>
+        <details><summary>Does it change RAW files?</summary><p>No. Light Leak is written to the JPEG and its previews, not to the RAW sensor data.</p></details>
+        <details><summary>Can I see the effect before shooting?</summary><p>No. The viewfinder icon indicates the active style, but the effect itself appears only in the recorded JPEG and its previews.</p></details>
+        <details><summary>Where do I put LITLEAK.GRM?</summary><p>Copy it to <code>GRKIT/MODULES/LITLEAK.GRM</code> from the root of the SD card.</p></details>
+        <details><summary>How do I remove it?</summary><p>Turn your camera off and remove <code>GRKIT/MODULES/LITLEAK.GRM</code> from the card. You do not need to flash the firmware.</p></details>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="safe-title">
+      <h2 id="safe-title">Safe to try</h2>
+      <div class="section-body">
+        <ul class="landing-facts">
+          <li><h3>No firmware flashing</h3><p>The module loads from the SD card. The camera firmware stays as it is.</p></li>
+          <li><h3>Easy to remove</h3><p>Delete the module file from the card to uninstall Light Leak.</p></li>
+          <li><h3>RAW files stay intact</h3><p>The effect is applied only to JPEGs and previews.</p></li>
+        </ul>
+        <a class="download landing-install landing-safe-install" href="install/">Install</a>
+      </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="wrap">
-      <div class="footer-row">
-        <strong>Light Leak for GRKit</strong>
-        <ul class="footer-links">
-          <li><a href="https://github.com/brunolimawd/grkit-light-leak">Source on GitHub</a></li>
+    <div class="footer-links">
+      <div class="footer-group">
+        <p class="footer-heading">Light Leak</p>
+        <ul>
+          <li><a href="./install/">Install</a></li>
+          <li><a href="./#looks">Looks</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <p class="footer-heading">Help</p>
+        <ul>
+          <li><a href="./guide/">Guide</a></li>
+          <li><a href="./#faq">FAQ</a></li>
+          <li><a href="./install/#compatibility">Compatibility</a></li>
+          <li><a href="https://grkit.app/docs/recovery/">Recovery</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <p class="footer-heading">Project</p>
+        <ul>
           <li><a href="https://github.com/brunolimawd/grkit-light-leak/releases">Releases</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/issues">Report an issue</a></li>
           <li><a href="https://grkit.app/">GRKit project</a></li>
         </ul>
       </div>
-      <p>An independent module maintained by <a href="https://github.com/brunolimawd">brunolimawd</a>. Not part of the official GRKit distribution and not affiliated with Ricoh.</p>
+      <div class="footer-group">
+        <p class="footer-heading">Legal</p>
+        <ul>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/tree/gh-pages#sample-photo-and-credits">Photo and design credits</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/blob/gh-pages/LICENSE">MIT license</a></li>
+          <li><a href="./assets/IBM-Plex-OFL.txt">IBM Plex</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <p>Light Leak is an independent module maintained by brunolimawd. It is not part of the official GRKit distribution and is not affiliated with Ricoh.</p>
+      <a href="https://github.com/brunolimawd/grkit-light-leak/releases">Light Leak · v0.1.0-beta.1</a>
     </div>
   </footer>
 </body>

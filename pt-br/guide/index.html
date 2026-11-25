@@ -19,47 +19,57 @@
   <meta property="og:image" content="https://brunolimawd.github.io/grkit-light-leak/assets/share.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Um trem ilustrado cruza uma baía ao entardecer com um vazamento de luz vermelho entrando pela direita.">
+  <meta property="og:image:alt" content="Um food truck com toldo listrado e clientes do lado de fora — Slit Flare">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="../../assets/mark.svg">
   <link rel="stylesheet" href="../../assets/site.css">
+  <script defer src="../../assets/site.js"></script>
 </head>
-<body>
+<body class="page">
   <a class="skip" href="#main">Pular para o conteúdo</a>
   <header class="masthead">
-    <div class="wrap masthead-inner">
-      <a class="brand" href="../">
-        <img src="../../assets/mark.svg" alt="" width="40" height="40">
-        <span><span class="brand-name">Light Leak</span> <span class="brand-sub">PARA GRKIT</span></span>
-      </a>
-      <nav class="nav" aria-label="Navegação principal">
-        <ul>
-          <li><a href="../">Estilos</a></li>
-          <li><a href="../install/">Instalação</a></li>
-          <li><a href="./" aria-current="page">Guia</a></li>
-          <li><a class="language" href="../../guide/" lang="en" hreflang="en">EN<span class="sr-only"> · English</span></a></li>
-        </ul>
-      </nav>
+    <div class="masthead-top">
+      <div class="masthead-title">
+        <a class="masthead-name" href="../../pt-br/">Light <span class="kit">Leak</span></a>
+        <a class="masthead-version" href="https://github.com/brunolimawd/grkit-light-leak/releases">beta</a>
+      </div>
+      <div class="languages">
+        <nav class="masthead-nav" aria-label="Navegação principal">
+          <a href="../../pt-br/#looks">Estilos</a>
+          <a href="../../pt-br/install/">Instalar</a>
+          <a href="../../pt-br/#faq">Dúvidas</a>
+          <a href="../../pt-br/guide/" aria-current="page">Guia</a>
+        </nav>
+        <a class="github" href="https://github.com/brunolimawd/grkit-light-leak" aria-label="GitHub">
+          <img src="../../assets/github.svg" width="22" height="22" alt="">
+        </a>
+        <a class="language-fallback" href="../../guide/" lang="en" hreflang="en">English</a>
+        <span class="language-select" hidden>
+          <select class="button" aria-label="Idioma" data-language>
+            <option value="../../guide/" lang="en">English</option>
+            <option value="../../pt-br/guide/" lang="pt-BR" selected>Português</option>
+          </select>
+        </span>
+      </div>
     </div>
   </header>
 
-  <main id="main" class="wrap" tabindex="-1">
-    <div class="page-intro">
-      <p class="eyebrow">Na câmera</p>
-      <h1>Guia do Light Leak</h1>
-      <p>Escolha um estilo, decida de que lado a luz entra no quadro e ajuste o que muda de uma foto para outra.</p>
-    </div>
+  <main id="main" tabindex="-1">
     <div class="docs-layout">
-      <nav class="contents" aria-label="Nesta página">
-        <p class="label">Nesta página</p>
+      <nav class="docs-side" aria-label="Nesta página">
+        <h2>Nesta página</h2>
         <ul>
           <li><a href="#first-shot">Primeira foto</a></li>
+          <li><a href="#styles">Os seis estilos</a></li>
           <li><a href="#controls">Controles</a></li>
           <li><a href="#viewfinder">Ícone no visor</a></li>
           <li><a href="#faq">Dúvidas frequentes</a></li>
         </ul>
       </nav>
       <article class="doc" aria-label="Como usar o módulo">
+        <h1>Guia do Light Leak</h1>
+        <p class="docs-lead">Escolha um estilo, decida de que lado a luz entra no quadro e ajuste o que muda de uma foto para outra.</p>
+
         <section id="first-shot" aria-labelledby="first-shot-title">
           <h2 id="first-shot-title">Faça a primeira foto</h2>
           <ol>
@@ -67,6 +77,19 @@
             <li>Pressione <strong>Fn</strong> para ajustar intensidade (<span lang="en">Strength</span>), posição (<span lang="en">Leak Position</span>) e variação (<span lang="en">Variation</span>). Para reproduzir os exemplos do site, use intensidade Média, posição Original e Variação 1.</li>
             <li>Tire uma foto e confira o JPEG na reprodução. O ícone no visor indica o estilo ativo, não mostra o efeito em si.</li>
           </ol>
+        </section>
+
+        <section id="styles" aria-labelledby="styles-title">
+          <h2 id="styles-title">Os seis estilos</h2>
+          <p>As descrições abaixo usam a Variação 1. Cada estilo permite mudar intensidade, lado de entrada e variação.</p>
+          <dl class="settings">
+            <div><dt lang="en">Slit Flare</dt><dd>Feixe branco, faixa vermelha e reflexo ciano. Entrada original pela direita.</dd></div>
+            <div><dt lang="en">Burnt Edge</dt><dd>Linha irregular e brilhante com luz vermelho-alaranjada. Entrada original pela direita.</dd></div>
+            <div><dt lang="en">Film Band</dt><dd>Faixa dourada contornada de vermelho e tons frios. Entrada original por baixo.</dd></div>
+            <div><dt lang="en">Amber Veil</dt><dd>Mancha âmbar com rastro vermelho na diagonal. Entrada original pelo topo.</dd></div>
+            <div><dt lang="en">Prismatic Arc</dt><dd>Arco vermelho, dourado, verde-azulado e azul. Entrada original pela direita.</dd></div>
+            <div><dt lang="en">Color Fog</dt><dd>Névoa diagonal em dourado, verde-azulado, azul e rosa. Entrada original pelo topo.</dd></div>
+          </dl>
         </section>
 
         <section id="controls" aria-labelledby="controls-title">
@@ -102,16 +125,44 @@
   </main>
 
   <footer class="footer">
-    <div class="wrap">
-      <div class="footer-row">
-        <strong>Light Leak para GRKit</strong>
-        <ul class="footer-links">
-          <li><a href="https://github.com/brunolimawd/grkit-light-leak">Código no GitHub</a></li>
+    <div class="footer-links">
+      <div class="footer-group">
+        <p class="footer-heading">Light Leak</p>
+        <ul>
+          <li><a href="../../pt-br/install/">Instalar</a></li>
+          <li><a href="../../pt-br/#looks">Estilos</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <p class="footer-heading">Ajuda</p>
+        <ul>
+          <li><a href="../../pt-br/guide/">Guia</a></li>
+          <li><a href="../../pt-br/#faq">Dúvidas</a></li>
+          <li><a href="../../pt-br/install/#compatibility">Compatibilidade</a></li>
+          <li><a href="https://grkit.app/docs/recovery/">Recuperação</a></li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <p class="footer-heading">Projeto</p>
+        <ul>
           <li><a href="https://github.com/brunolimawd/grkit-light-leak/releases">Versões</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/issues">Reportar problema</a></li>
           <li><a href="https://grkit.app/">Projeto GRKit</a></li>
         </ul>
       </div>
-      <p>Módulo independente mantido por <a href="https://github.com/brunolimawd">brunolimawd</a>. Não faz parte da distribuição oficial do GRKit e não é afiliado à Ricoh.</p>
+      <div class="footer-group">
+        <p class="footer-heading">Legal</p>
+        <ul>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/tree/gh-pages#sample-photo-and-credits">Créditos da foto e do design</a></li>
+          <li><a href="https://github.com/brunolimawd/grkit-light-leak/blob/gh-pages/LICENSE">Licença MIT</a></li>
+          <li><a href="../../assets/IBM-Plex-OFL.txt">IBM Plex</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <p>Light Leak é um módulo independente mantido por brunolimawd. Não faz parte da distribuição oficial do GRKit e não é afiliado à Ricoh.</p>
+      <a href="https://github.com/brunolimawd/grkit-light-leak/releases">Light Leak · v0.1.0-beta.1</a>
     </div>
   </footer>
 </body>
