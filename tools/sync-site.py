@@ -9,6 +9,8 @@ import re
 ROOT = Path(__file__).resolve().parent.parent
 REPO = "https://github.com/brunolimawd/grkit-light-leak"
 RELEASES = f"{REPO}/releases"
+GRKIT = "https://grkit.app/"
+GRKIT_MAINTAINER = "https://github.com/ahonn"
 RECOVERY = "https://grkit.app/docs/recovery/"
 PHOTO = "https://www.flickr.com/photos/mujitra/53311001084/"
 PHOTO_LICENSE = "https://creativecommons.org/licenses/by/2.0/"
@@ -44,6 +46,7 @@ COPY = {
         "disclaimer": "Light Leak is an independent module maintained by brunolimawd. It is not part of the official GRKit distribution and is not affiliated with Ricoh.",
         "lead": ("Film light leaks for your RICOH GR.", "No firmware flashing."),
         "summary": "An unofficial module written to your SD card. Tested on the RICOH GR III with firmware 2.10. Applies to JPEGs and previews without changing RAW files.",
+        "upstream": ("Original project", "Visit GRKit", "Light Leak is an independent module for {grkit}. Thanks to {maintainer} for creating and maintaining GRKit, and for the dedication that makes modules like this possible."),
         "photo": "A food truck with a striped awning and customers outside",
         "compare": "Before and after: slide to reveal the Light Leak effect",
         "before": "Without Light Leak",
@@ -75,6 +78,7 @@ COPY = {
         "disclaimer": "Light Leak é um módulo independente mantido por brunolimawd. Não faz parte da distribuição oficial do GRKit e não é afiliado à Ricoh.",
         "lead": ("Vazamentos de luz de filme na sua RICOH GR.", "Sem gravar firmware."),
         "summary": "Um módulo não oficial que roda do cartão SD. Testado na RICOH GR III com firmware 2.10. O efeito sai no JPEG e nas prévias, sem alterar o RAW.",
+        "upstream": ("Projeto original", "Visitar o GRKit", "O Light Leak é um módulo independente para o {grkit}. Obrigado a {maintainer} pela dedicação em criar e manter o GRKit e por tornar possíveis módulos como este."),
         "photo": "Um food truck com toldo listrado e clientes do lado de fora",
         "compare": "Antes e depois: deslize para revelar o efeito Light Leak",
         "before": "Sem Light Leak",
@@ -157,7 +161,7 @@ def footer(lang, root):
     groups = (
         ("Light Leak", ((home + "install/", install), (home + "#looks", looks), (REPO, "GitHub"))),
         (help_title, ((home + "guide/", guide), (home + "#faq", faq), (home + "install/#compatibility", compat), (RECOVERY, recover))),
-        (project, ((RELEASES, releases), (f"{REPO}/issues", issues), ("https://grkit.app/", grkit))),
+        (project, ((RELEASES, releases), (f"{REPO}/issues", issues), (GRKIT, grkit))),
         (legal, ((f"{REPO}/tree/gh-pages#sample-photo-and-credits", credits), (f"{REPO}/blob/gh-pages/LICENSE", license_name), (root + "assets/IBM-Plex-OFL.txt", "IBM Plex"))),
     )
     columns = []
@@ -188,6 +192,11 @@ def home_main(lang, root):
     camera, diagram, adj, fn = t["camera"]
     safe, *facts = t["safe"]
     install = t["links"][1]
+    upstream_title, upstream_link, upstream_credit = t["upstream"]
+    upstream_credit = upstream_credit.format(
+        grkit=link(GRKIT, "GRKit"),
+        maintainer=link(GRKIT_MAINTAINER, "Yuexun Jiang (@ahonn)"),
+    )
 
     def credit(camera=False):
         return f'{link(PHOTO, "MIKI Yoshihito")} · {link(PHOTO_LICENSE, "CC BY 2.0")}' + (
@@ -250,7 +259,10 @@ def home_main(lang, root):
       <div class="landing-copy">
         <h1 class="lead" id="hero-title"><span class="lead-line">{t["lead"][0]}</span> <span class="lead-line">{t["lead"][1]}</span></h1>
         <div class="landing-action">
-          <a class="download landing-install" href="install/">{install}</a>
+          <div class="landing-action-links">
+            <a class="download landing-install" href="install/">{install}</a>
+            <a class="landing-upstream" href="{GRKIT}">{upstream_link}</a>
+          </div>
           <p class="note">{t["summary"]}</p>
         </div>
       </div>
@@ -375,6 +387,13 @@ def home_main(lang, root):
 {fact_markup}
         </ul>
         <a class="download landing-install landing-safe-install" href="install/">{install}</a>
+      </div>
+    </section>
+
+    <section class="section" id="original-project" aria-labelledby="original-project-title">
+      <h2 id="original-project-title">{upstream_title}</h2>
+      <div class="section-body">
+        <p class="landing-text">{upstream_credit}</p>
       </div>
     </section>
   </main>"""
